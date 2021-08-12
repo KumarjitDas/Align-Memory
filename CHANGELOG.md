@@ -8,6 +8,33 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 
 ## [Unreleased]
 
+- Examples
+- Documentations
+- Packages using *NSIS* and *vcpkg*
+
+## [0.2.0] - 2021-08-12
+
+### Added
+
+- More compiler warning options in
+  [set_compiler_warnings.cmake](CMake/set_compiler_warnings.cmake) file
+- [utility.h](Sources/src/align_memory/utility.h) file in
+  [src/align_memory](Sources/src/align_memory/)
+- API function declarations in
+  [align_memory.h](Sources/include/align_memory/align_memory.h) file
+- API function definitions in
+  [align_memory.c](Sources/src/align_memory/align_memory.h) file
+- Changelogs till *v0.1.0* in [Changelog](CHANGELOG.md) file
+- [include_tests.cmake](CMake/include_tests.cmake) file
+- Updated [Readme](README.md) file
+- New tests in [Tests](Tests/) directory
+  - [](Tests/kdi_align_memory_get_allocation_size.c) test file
+  - [](Tests/kdi_align_memory_get_aligned_address.c) test file
+  - [](Tests/kdi_align_memory_get_actual_address.c) test file
+- [Examples](Examples/) directory
+  - [CMake](Examples/CMakeLists.txt) file
+  - [ex001.c](Examples/ex001.c) example file
+
 ## [0.1.0] - 2021-08-12
 
 ### Added
@@ -18,16 +45,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 - [License](LICENSE) file
 - [Readme](README.md) file
 - [CMake](CMake/) directory
-  - [add_sources_to_target](CMake/add_sources_to_target.cmake),
-    [create_library](CMake/create_library.cmake),
-    [generate_export_header](CMake/generate_export_header.cmake),
-    [include_tests](CMake/include_tests.cmake),
-    [set_build_output_directories](CMake/set_build_output_directories.cmake),
-    [set_build_postfixes](CMake/set_build_postfixes.cmake),
-    [set_c_standard](CMake/set_c_standard.cmake),
-    [set_compiler_warnings](CMake/set_compiler_warnings.cmake),
-    [set_include_directories](CMake/set_include_directories.cmake), and
-    [validate_build_config](CMake/validate_build_config.cmake) files
+  - [add_sources_to_target.cmake](CMake/add_sources_to_target.cmake),
+    [create_library.cmake](CMake/create_library.cmake),
+    [generate_export_header.cmake](CMake/generate_export_header.cmake),
+[set_build_output_directories.cmake](CMake/set_build_output_directories.cmake),
+    [set_build_postfixes.cmake](CMake/set_build_postfixes.cmake),
+    [set_c_standard.cmake](CMake/set_c_standard.cmake),
+    [set_compiler_warnings.cmake](CMake/set_compiler_warnings.cmake),
+    [set_include_directories.cmake](CMake/set_include_directories.cmake), and
+    [validate_build_config.cmake](CMake/validate_build_config.cmake) files
 - Root [CMake](CMakeLists.txt) file
 - [Sources](Sources/) directory
   - [include](Sources/include/) subdirectory
@@ -38,10 +64,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
       - [align_memory.c](Sources/src/align_memory/align_memory.c) file
 - [Tests](Tests/) directory
   - [CMake](Tests/CMakeLists.txt) file
-- [Examples](Examples/) directory
-  - [CMake](Examples/CMakeLists.txt) file
-  - [ex001.c](Examples/ex001.c) example file
 
-[Unreleased]: https://github.com/KumarjitDas/Align-Memory/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/KumarjitDas/Align-Memory/releases/tag/v0.1.0
+[Unreleased]: https://github.com/KumarjitDas/Memory/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/KumarjitDas/Memory/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/KumarjitDas/Memory/releases/tag/v0.1.0
