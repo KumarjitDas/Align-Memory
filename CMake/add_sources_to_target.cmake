@@ -8,7 +8,8 @@ set(INCLUDE_FILE "${INCLUDE_DIRECTORY}/align_memory/align_memory.h")
 target_sources("${PROJECT_NAME}" PRIVATE "${INCLUDE_FILE}")
 
 # Adding the source files to the main target
-set(SRC_FILES "${SRC_DIRECTORY}/align_memory/align_memory.c")
+set(SRC_FILES "${SRC_DIRECTORY}/align_memory/align_memory.c"
+              "${SRC_DIRECTORY}/align_memory/utility.h")
 target_sources("${PROJECT_NAME}" PRIVATE "${SRC_FILES}")
 
 # Setting the install destination for include and source file
