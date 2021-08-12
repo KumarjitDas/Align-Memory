@@ -2,6 +2,5 @@
 
 int main()
 {
-    get_greeting();
     return 0;
 }
