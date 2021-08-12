@@ -42,6 +42,8 @@ include("CMake/generate_export_header.cmake")
 # Add the source files to the main target
 include("CMake/add_sources_to_target.cmake")
 
-# Adding the `Source`, `Tests`, and `Examples` directories
-add_subdirectory("Tests")
+# Add the source files to the main target
+include("CMake/include_tests.cmake")
+
+# Adding the `Examples` directories
 add_subdirectory("Examples")
