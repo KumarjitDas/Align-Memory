@@ -28,9 +28,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 - [include_tests.cmake](CMake/include_tests.cmake) file
 - Updated [Readme](README.md) file
 - New tests in [Tests](Tests/) directory
-  - [](Tests/kdi_align_memory_get_allocation_size.c) test file
-  - [](Tests/kdi_align_memory_get_aligned_address.c) test file
-  - [](Tests/kdi_align_memory_get_actual_address.c) test file
+  - [kdi_align_memory_get_allocation_size.c](Tests/kdi_align_memory_get_allocation_size.c) test file
+  - [kdi_align_memory_get_aligned_address.c](Tests/kdi_align_memory_get_aligned_address.c) test file
+  - [kdi_align_memory_get_actual_address.c](Tests/kdi_align_memory_get_actual_address.c) test file
 - [Examples](Examples/) directory
   - [CMake](Examples/CMakeLists.txt) file
   - [ex001.c](Examples/ex001.c) example file
@@ -65,6 +65,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 - [Tests](Tests/) directory
   - [CMake](Tests/CMakeLists.txt) file
 
-[Unreleased]: https://github.com/KumarjitDas/Memory/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/KumarjitDas/Memory/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/KumarjitDas/Memory/releases/tag/v0.1.0
+[Unreleased]: https://github.com/KumarjitDas/Align-Memory/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/KumarjitDas/Align-Memory/releases/tag/v0.1.0
