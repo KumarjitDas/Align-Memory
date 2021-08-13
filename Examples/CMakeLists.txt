@@ -1,3 +1,5 @@
+message(STATUS "${MY_STATUS_VARIABLE} Examples subdirectory added.")
+
 # # Set the list of example programs
 # set(EXAMPLE_LIST "ex001")
 #

@@ -2,6 +2,7 @@
 #define _KDI_ALIGN_MEMORY_H_
 
 #include "align_memory_api.h"
+#include "align_memory_version.h"
 
 #include <stdint.h>
 

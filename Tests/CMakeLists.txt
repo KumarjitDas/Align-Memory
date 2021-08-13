@@ -1,3 +1,5 @@
+message(STATUS "${MY_STATUS_VARIABLE} Tests subdirectory added.")
+
 # Set the list of example programs
 set(TEST_LIST "kdi_align_memory_get_allocation_size"
               "kdi_align_memory_get_aligned_address"

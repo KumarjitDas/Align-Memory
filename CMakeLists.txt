@@ -2,17 +2,14 @@
 # @date   10.08.2021
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
-# Generate compile commands for IDE's
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
-
-# Setting the `BUILD_SHARED_LIBS` variable as an option
-option(BUILD_SHARED_LIBS "Build this project as a shared library." ON)
+# Validate the build configuration
+include("CMake/setup_project.cmake")
 
 # Setting the project name and other descriptions
-project("align_memory"
-        VERSION      "0.1.0"
+project("${MY_PROJECT_NAME}"
+        VERSION      "0.3.0"
         DESCRIPTION  "A simple C library for easy memory alignment."
-        HOMEPAGE_URL "https://KumarjitDas/Align-Memory.git"
+        HOMEPAGE_URL "https://github.com/KumarjitDas/Align-Memory.git"
         LANGUAGES    "C")
 
 # Validate the build configuration
@@ -38,6 +35,9 @@ include("CMake/set_build_postfixes.cmake")
 
 # Generate export header
 include("CMake/generate_export_header.cmake")
+
+# Configure the versions of this project
+include("CMake/configure_project_version.cmake")
 
 # Add the source files to the main target
 include("CMake/add_sources_to_target.cmake")
