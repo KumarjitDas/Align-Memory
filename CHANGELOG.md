@@ -12,6 +12,20 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 - Documentations
 - Packages using *NSIS* and *vcpkg*
 
+## [0.3.0] - 2021-08-13
+
+### Added
+
+- Status messages in all **CMake** files
+- [setup_project.cmake](CMake/setup_project.cmake) and
+  [configure_project_version.cmake](CMake/configure_project_version.cmake)
+  files
+- Seperate *PROJECT_NAME* and *LIBRARY_NAME* in root [CMake](CMakeLists.txt)
+  file
+- [Configuration](Configuration/) directory
+  - A [Configuration](Configuration/configure_version.h.in) file for project
+    version header
+
 ## [0.2.0] - 2021-08-12
 
 ### Added
@@ -48,7 +62,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
   - [add_sources_to_target.cmake](CMake/add_sources_to_target.cmake),
     [create_library.cmake](CMake/create_library.cmake),
     [generate_export_header.cmake](CMake/generate_export_header.cmake),
-[set_build_output_directories.cmake](CMake/set_build_output_directories.cmake),
+    [set_build_output_directories.cmake](CMake/set_build_output_directories.cmake),
     [set_build_postfixes.cmake](CMake/set_build_postfixes.cmake),
     [set_c_standard.cmake](CMake/set_c_standard.cmake),
     [set_compiler_warnings.cmake](CMake/set_compiler_warnings.cmake),
@@ -65,6 +79,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 - [Tests](Tests/) directory
   - [CMake](Tests/CMakeLists.txt) file
 
-[Unreleased]: https://github.com/KumarjitDas/Align-Memory/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/KumarjitDas/Align-Memory/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/KumarjitDas/Align-Memory/releases/tag/v0.1.0
