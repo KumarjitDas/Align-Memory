@@ -7,7 +7,7 @@ include("CMake/setup_project.cmake")
 
 # Setting the project name and other descriptions
 project("${MY_PROJECT_NAME}"
-        VERSION      "0.3.0"
+        VERSION      "0.4.0"
         DESCRIPTION  "A simple C library for easy memory alignment."
         HOMEPAGE_URL "https://github.com/KumarjitDas/Align-Memory.git"
         LANGUAGES    "C")
