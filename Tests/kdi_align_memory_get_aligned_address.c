@@ -18,7 +18,7 @@ int main()
     if (pMemory == NULL) return EXIT_FAILURE;
     pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
                                                            uiAlignment_size);
-    assert((uintmax_t) pMemory_aligned == (uintmax_t) pMemory + 2);
+    assert((uintmax_t) pMemory_aligned == (uintmax_t) pMemory + 1);
     free(pMemory);
 
     // Test 2

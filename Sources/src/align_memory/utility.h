@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
-#define ___KDI_ALIGN_MEMORY_OFFSET_SIZE sizeof(uint16_t)
+typedef uint8_t ___kdi_offset_t;
+
+#define ___KDI_ALIGN_MEMORY_OFFSET_SIZE sizeof(___kdi_offset_t)
 
 #endif  /* _KDI_ALIGN_MEMORY_H_ */
