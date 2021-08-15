@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 # Validate the build configuration
 include("CMake/setup_project.cmake")
 
-# Setting the project name and other descriptions
-project("${MY_PROJECT_NAME}"
+# Setting the project name, version, and other descriptions
+project(${MY_PROJECT_NAME}
         VERSION      "0.4.0"
         DESCRIPTION  "A simple C library for easy memory alignment."
         HOMEPAGE_URL "https://github.com/KumarjitDas/Align-Memory.git"
@@ -41,6 +41,18 @@ include("CMake/configure_project_version.cmake")
 
 # Add the source files to the main target
 include("CMake/add_sources_to_target.cmake")
+
+# Adding this to make cache variables for install destinations
+include("GNUInstallDirs")
+
+# Add the source files to the main target
+include("CMake/export_rules.cmake")
+
+# For accessing the package configuration helper functions
+include("CMakePackageConfigHelpers")
+
+# Adding the package configuration for `find_package` support
+include("CMake/package_configuration.cmake")
 
 # Add the source files to the main target
 include("CMake/include_tests.cmake")
