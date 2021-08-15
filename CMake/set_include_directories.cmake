@@ -1,7 +1,7 @@
 message(STATUS "${MY_STATUS_VARIABLE} Setting include directories.")
 
 target_include_directories(
-    "${MY_LIBRARY_NAME}" PUBLIC
+    ${MY_LIBRARY_NAME} PUBLIC
     # Adding include directory for public inclusion
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sources/include>"
     # Adding the current binary directory to include path to include the

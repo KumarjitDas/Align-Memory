@@ -7,15 +7,15 @@ string(CONCAT MSVC_WARNINGS "/WX /W4 /w14242 /w14254 /w14263 /w14265 /w14287 "
 
 set(CLANG_WARNINGS "-Wall -Wextra -Wpedantic -Werror")
 
-set(GCC_WARNINGS "${CLANG_WARNINGS}")
+set(GCC_WARNINGS ${CLANG_WARNINGS})
 
 # Setting compiler warnings to the main target
 if(MSVC)
-    target_compile_options("${MY_LIBRARY_NAME}" PRIVATE "${MSVC_WARNINGS}")
+    target_compile_options(${MY_LIBRARY_NAME} PRIVATE ${MSVC_WARNINGS})
 elseif(CMAKE_C_COMPILER_ID MATCHES ".*Clang")
-    target_compile_options("${MY_LIBRARY_NAME}" PRIVATE "${CLANG_WARNINGS}")
+    target_compile_options(${MY_LIBRARY_NAME} PRIVATE ${CLANG_WARNINGS})
 elseif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
-    target_compile_options("${MY_LIBRARY_NAME}" PRIVATE "${GCC_WARNINGS}")
+    target_compile_options(${MY_LIBRARY_NAME} PRIVATE ${GCC_WARNINGS})
 else()
     message(AUTHOR_WARNING "No compiler warnings set for ${MY_LIBRARY_NAME}")
 endif()

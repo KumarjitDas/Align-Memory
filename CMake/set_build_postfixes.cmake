@@ -7,7 +7,7 @@ endif()
 
 # Setting build postfixes for different build configurations
 set_target_properties(
-    "${MY_LIBRARY_NAME}"   PROPERTIES
+    ${MY_LIBRARY_NAME}     PROPERTIES
     OUTPUT_NAME            "${MY_LIBRARY_NAME}"
     DEBUG_POSTFIX          "${STATIC_POSTFIX}-d"
     RELEASE_POSTFIX        "${STATIC_POSTFIX}"

@@ -1,5 +1,5 @@
 # Check if the parent project is this project or not
-if("${CMAKE_PROJECT_NAME}" STREQUAL "${PROJECT_NAME}")
+if(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
     message(STATUS "${MY_STATUS_VARIABLE} Enabling testing.")
 
     # Enable testing for this projcet
