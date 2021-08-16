@@ -10,7 +10,34 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 
 - Examples
 - Documentations
-- Packages using *NSIS* and *vcpkg*
+- *CPack* packaging support
+- *vcpkg* packaging support
+
+## [0.4.0] - 2021-08-16
+
+### Added
+
+- *___kdi_offset_t* type for offset types in
+  [utility.h](Sources/src/align_memory/utility.h) file
+- Compiler warnings for *MSVC*, *Clang*, and *GCC*
+- Package configuration and version configuration files
+- [Config.cmake.in](Configuration/Config.cmake.in) file in
+  [Configuration](Configuration/) directory for the package configuration
+
+### Changed
+
+- Function definitions in
+  [align_memory.c](Sources/src/align_memory/align_memory.c) file according to
+  the new offset type
+- Tests in [kdi_align_memory_get_allocation_size.c](Tests/kdi_align_memory_get_allocation_size.c)
+  and [kdi_align_memory_get_aligned_address.c](Tests/kdi_align_memory_get_aligned_address.c)
+  files according to the new offset type
+- Version number to *0.4.0* in root [CMake](CMakeLists.txt) file
+
+### Removed
+
+- Unnecessary quotes from all standalone variables in all of the
+  [CMake](CMake/) files
 
 ## [0.3.0] - 2021-08-13
 
@@ -79,7 +106,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 - [Tests](Tests/) directory
   - [CMake](Tests/CMakeLists.txt) file
 
-[Unreleased]: https://github.com/KumarjitDas/Align-Memory/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/KumarjitDas/Align-Memory/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/KumarjitDas/Align-Memory/releases/tag/v0.1.0
