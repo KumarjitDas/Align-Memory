@@ -1,3 +1,8 @@
+message(STATUS "${MY_STATUS_VARIABLE} Configuring package config file.")
+
+# For accessing the package configuration helper functions
+include("CMakePackageConfigHelpers")
+
 # Configuring the `Config` file for packaging this library
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/Configuration/Config.cmake.in"

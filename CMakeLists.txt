@@ -42,14 +42,8 @@ include("CMake/configure_project_version.cmake")
 # Add the source files to the main target
 include("CMake/add_sources_to_target.cmake")
 
-# Adding this to make cache variables for install destinations
-include("GNUInstallDirs")
-
 # Add the source files to the main target
 include("CMake/export_rules.cmake")
-
-# For accessing the package configuration helper functions
-include("CMakePackageConfigHelpers")
 
 # Adding the package configuration for `find_package` support
 include("CMake/package_configuration.cmake")

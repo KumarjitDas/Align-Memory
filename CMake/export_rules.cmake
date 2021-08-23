@@ -1,3 +1,8 @@
+message(STATUS "${MY_STATUS_VARIABLE} Generating ${MY_PROJECT_NAME}-targets.")
+
+# Adding this to make cache variables for install destinations
+include("GNUInstallDirs")
+
 # Creating export target for the main library
 install(TARGETS              ${MY_LIBRARY_NAME}
         EXPORT               "${MY_PROJECT_NAME}-targets"
