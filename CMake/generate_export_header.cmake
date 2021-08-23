@@ -26,3 +26,7 @@ if(NOT BUILD_SHARED_LIBS)
         COMPILE_FLAGS "-D${MY_STATIC_DEFINE}"
     )
 endif()
+
+# Setting the install destination of the export header
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${MY_LIBRARY_NAME}_api.h"
+        DESTINATION "include/${MY_LIBRARY_NAME}")
