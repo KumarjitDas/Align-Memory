@@ -9,9 +9,44 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 ## [Unreleased]
 
 - Examples
-- Documentations
 - *CPack* packaging support
 - *vcpkg* packaging support
+
+## [0.5.0] - 2021-08-24
+
+### Added
+
+- Install rule for version header and config/api header files in
+  [configure_project_version.cmake](CMake/configure_project_version.cmake) and
+  [generate_export_header.cmake](CMake/generate_export_header.cmake)
+- Inclusion of **GNUInstallDirs** in
+  [export_rules.cmake](CMake/export_rules.cmake)
+- Inclusion of **CMakePackageConfigHelpers** in
+  [package_configuration.cmake](CMake/package_configuration.cmake)
+- Adding more compiler warning options for *Clang* and *GNU C* compilers in
+  [set_compiler_warnings.cmake](CMake/set_compiler_warnings.cmake)
+- [Scripts](Scripts/) directory for shell/batch scripts
+  - CMake configure commands in [configure.bat](Scripts/configure.bat) script
+    file
+  - CMake build commands in [build.bat](Scripts/build.bat) script file
+  - CTest commands in [test.bat](Scripts/test.bat) script file
+- Copyright message in [root CMake file](CMakeLists.txt),
+  [align_memory.h](Sources/include/align_memory/align_memory.h),
+  [align_memory.c](Sources/src/align_memory/align_memory.c), and
+  [utility.h](Sources/src/align_memory/utility.h) source files
+- Documentation for api functions in
+  [align_memory.h](Sources/include/align_memory/align_memory.h) file
+
+### Changed
+
+- Absolute names in [Config.cmake.in](Configuration/Config.cmake.in) file
+
+### Removed
+
+- Inclusion of **GNUInstallDirs** and **CMakePackageConfigHelpers** in root
+  [CMake](CMakeLists.txt) file
+- Unnecessary quotes in
+  [set_include_directories.cmake](CMake/set_include_directories.cmake)
 
 ## [0.4.0] - 2021-08-16
 
@@ -106,7 +141,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 - [Tests](Tests/) directory
   - [CMake](Tests/CMakeLists.txt) file
 
-[Unreleased]: https://github.com/KumarjitDas/Align-Memory/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/KumarjitDas/Align-Memory/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/KumarjitDas/Align-Memory/compare/v0.1.0...v0.2.0
