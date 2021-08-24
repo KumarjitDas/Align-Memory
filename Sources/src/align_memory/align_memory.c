@@ -1,3 +1,13 @@
+/**
+ * @file align_memory.c
+ * @author Kumarjit Das (kumarjitdas1999@gmail.com)
+ * @brief A simple C library for easy memory alignment.
+ * @version 0.5.0
+ * @date 2021-08-24
+ *
+ * @copyright Copyright (c) 2021
+ */
+
 #include "align_memory/align_memory.h"
 #include "utility.h"
 
