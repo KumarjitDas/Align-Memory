@@ -1,5 +1,13 @@
-# @author Kumarjit Das
-# @date   10.08.2021
+##
+# @file CMakeLists.txt
+# @author Kumarjit Das (kumarjitdas1999@gmail.com)
+# @brief A simple C library for easy memory alignment.
+# @version 0.5.0
+# @date 2021-08-10
+#
+# @copyright Copyright (c) 2021
+#
+
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 # Validate the build configuration
@@ -7,7 +15,7 @@ include("CMake/setup_project.cmake")
 
 # Setting the project name, version, and other descriptions
 project(${MY_PROJECT_NAME}
-        VERSION      "0.4.0"
+        VERSION      "0.5.0"
         DESCRIPTION  "A simple C library for easy memory alignment."
         HOMEPAGE_URL "https://github.com/KumarjitDas/Align-Memory.git"
         LANGUAGES    "C")

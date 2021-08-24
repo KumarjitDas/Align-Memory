@@ -1,11 +1,11 @@
 message(STATUS "${MY_STATUS_VARIABLE} Tests subdirectory added.")
 
-# Set the list of example programs
+# Set the list of test programs
 set(TEST_LIST "kdi_align_memory_get_allocation_size"
               "kdi_align_memory_get_aligned_address"
               "kdi_align_memory_get_actual_address")
 
-# Loop through each item in the examples list
+# Loop through each item in the tests list
 foreach(TEST_ITEM ${TEST_LIST})
     # Build an executable from the `TEST_ITEM` source
     add_executable("${TEST_ITEM}" "${TEST_ITEM}.c")
