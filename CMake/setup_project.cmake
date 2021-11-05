@@ -1,14 +1,29 @@
-# Setting the project name
-set(MY_PROJECT_NAME "Align-Memory")
+# Setting the project name in lower, upper, and mixed case
+set(__PROJECT_NAME "Align-Memory")
+string(TOLOWER ${__PROJECT_NAME} __PROJECT_NAME_LOWER)
+string(TOUPPER ${__PROJECT_NAME} __PROJECT_NAME_UPPER)
 
 # Setting the main library name in both lower and upper-cases
-set(MY_LIBRARY_NAME "align_memory")
-string(TOUPPER "${MY_LIBRARY_NAME}" MY_LIBRARY_NAME_UPPER)
+set(__LIBRARY_NAME "align_memory")
+string(TOUPPER ${__LIBRARY_NAME} __LIBRARY_NAME_UPPER)
+
+# Setting project version
+set(${__LIBRARY_NAME_UPPER}_VERSION_MAJOR 0)
+set(${__LIBRARY_NAME_UPPER}_VERSION_MINOR 5)
+set(${__LIBRARY_NAME_UPPER}_VERSION_PATCH 0)
+string(CONCAT ${__LIBRARY_NAME_UPPER}_VERSION
+       "${${__LIBRARY_NAME_UPPER}_VERSION_MAJOR}."
+       "${${__LIBRARY_NAME_UPPER}_VERSION_MINOR}."
+       "${${__LIBRARY_NAME_UPPER}_VERSION_PATCH}")
+
+# Setting project description
+string(CONCAT ${__PROJECT_NAME_UPPER}_DESCRIPTION
+       "A simple C library for easy memory alignment.")
 
 # Setting status message variable
-set(MY_STATUS_VARIABLE "[${MY_PROJECT_NAME}]")
+set(__STATUS_VARIABLE "[${__PROJECT_NAME}]")
 
-message(STATUS "${MY_STATUS_VARIABLE} Initiating the project setup.")
+message(STATUS "${__STATUS_VARIABLE} Initiating the project setup.")
 
 # Generate compile commands for IDE's
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")

@@ -8,15 +8,15 @@
 # @copyright Copyright (c) 2021
 #
 
-cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 
 # Validate the build configuration
 include("CMake/setup_project.cmake")
 
 # Setting the project name, version, and other descriptions
-project(${MY_PROJECT_NAME}
-        VERSION      "0.5.0"
-        DESCRIPTION  "A simple C library for easy memory alignment."
+project(${__PROJECT_NAME}
+        VERSION      ${${__LIBRARY_NAME_UPPER}_VERSION}
+        DESCRIPTION  ${${__PROJECT_NAME_UPPER}_DESCRIPTION}
         HOMEPAGE_URL "https://github.com/KumarjitDas/Align-Memory.git"
         LANGUAGES    "C")
 
@@ -28,6 +28,9 @@ include("CMake/create_library.cmake")
 
 # Set the build output directories
 include("CMake/set_build_output_directories.cmake")
+
+# Set the installation directories
+include("CMake/set_install_directories.cmake")
 
 # Set the C standard
 include("CMake/set_c_standard.cmake")

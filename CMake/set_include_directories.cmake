@@ -1,9 +1,13 @@
-message(STATUS "${MY_STATUS_VARIABLE} Setting include directories.")
+message(STATUS "${__STATUS_VARIABLE} Setting include directories.")
+
+# Setting the relative include path
+set(RELATIVE_INCLUDE_DIR_PATH "Sources/include" CACHE PATH
+    "Public include directories of this project.")
 
 target_include_directories(
-    ${MY_LIBRARY_NAME} PUBLIC
+    ${__LIBRARY_NAME} PUBLIC
     # Adding include directory for public inclusion
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sources/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${RELATIVE_INCLUDE_DIR_PATH}>
     # Adding the current binary directory to include path to include the
     # generated export header and configured version header
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
