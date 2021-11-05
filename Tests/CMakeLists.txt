@@ -1,4 +1,4 @@
-message(STATUS "${MY_STATUS_VARIABLE} Tests subdirectory added.")
+message(STATUS "${__STATUS_VARIABLE} Tests subdirectory added.")
 
 # Set the list of test programs
 set(TEST_LIST "kdi_align_memory_get_allocation_size"

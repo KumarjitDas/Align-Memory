@@ -1,4 +1,4 @@
-message(STATUS "${MY_STATUS_VARIABLE} Validating build configuration.")
+message(STATUS "${__STATUS_VARIABLE} Validating build configuration.")
 
 set(VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
 # Validate build configuration

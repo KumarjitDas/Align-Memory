@@ -1,4 +1,4 @@
-message(STATUS "${MY_STATUS_VARIABLE} Configuring package config file.")
+message(STATUS "${__STATUS_VARIABLE} Configuring package config file.")
 
 # For accessing the package configuration helper functions
 include("CMakePackageConfigHelpers")
@@ -6,27 +6,23 @@ include("CMakePackageConfigHelpers")
 # Configuring the `Config` file for packaging this library
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/Configuration/Config.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/${MY_PROJECT_NAME}Config.cmake"
-    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${MY_LIBRARY_NAME}"
-)
-# Setting the version numbers for the config version file
-set_property(TARGET ${MY_LIBRARY_NAME} PROPERTY VERSION ${PROJECT_VERSION})
-set_property(TARGET ${MY_LIBRARY_NAME}
-             PROPERTY SOVERSION ${PROJECT_VERSION_MAJOR})
-set_property(TARGET ${MY_LIBRARY_NAME}
-             PROPERTY "INTERFACE_${MY_LIBRARY_NAME_UPPER}_VERSION" 3)
-set_property(
-    TARGET ${MY_LIBRARY_NAME} APPEND PROPERTY
-    COMPATIBLE_INTERFACE_STRING "${MY_LIBRARY_NAME_UPPER}_MAJOR_VERSION"
+    "${CMAKE_CURRENT_BINARY_DIR}/${__PROJECT_NAME_LOWER}-config.cmake"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${__LIBRARY_NAME}"
+    PATH_VARS __INSTALL_LIB_DIR __INSTALL_BIN_DIR __INSTALL_INCLUDE_DIR
+              __INSTALL_CMAKE_DIR RELATIVE_INCLUDE_DIR_PATH
 )
 # generate the version file for the config file
 write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/${MY_PROJECT_NAME}ConfigVersion.cmake"
-    VERSION ${PROJECT_VERSION}
+    "${CMAKE_CURRENT_BINARY_DIR}/${__PROJECT_NAME_LOWER}-config-version.cmake"
+    VERSION ${${__LIBRARY_NAME_UPPER}_VERSION}
     COMPATIBILITY AnyNewerVersion
 )
 # Setting the install location for the generated config files
-install(FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/${MY_PROJECT_NAME}Config.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/${MY_PROJECT_NAME}ConfigVersion.cmake"
-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${MY_LIBRARY_NAME}")
+install(
+    FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${__PROJECT_NAME_LOWER}-config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/${__PROJECT_NAME_LOWER}-config-version.cmake"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${__LIBRARY_NAME}"
+)
+# Export the package for use from the build-tree
+export(PACKAGE ${__PROJECT_NAME})
