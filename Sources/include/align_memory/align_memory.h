@@ -1,11 +1,33 @@
 /**
  * @file align_memory.h
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief A simple C library for easy memory alignment.
+ * @brief Contains all `Align-Memory` library function declarations.
  * @version 0.5.0
- * @date 2021-08-24
+ * @date 2021-12-01
  *
  * @copyright Copyright (c) 2021
+ *
+ * License(MIT License):
+ *
+ * Copyright (c) 2021 Kumarjit Das | কুমারজিৎ দাস
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  */
 
 #ifndef _KDI_ALIGN_MEMORY_H_
@@ -18,42 +40,59 @@
 
 /**
  * @brief Returns the allocation size from the actual and alignment size.
- * The alignment size should be any of these values: 1, 2, 4, 8, 16, 32, 64,
- * or 128.
  *
- * @param uiActual_size    actual memory size
+ * It calculates and returns the value of
+ *     (KDI align-memroy offset size +
+ *      alignment size - 1 +
+ *      usable memory size)
+ * which is the new memory allocation size. The alignment size should be any
+ * of these values: 1, 2, 4, 8, 16, 32, 64, or 128.
+ *
+ * `uiUsable_size` and `uiAlignment_size` should be non-zero values
+ *
+ * @param uiUsable_size    actual memory size
  * @param uiAlignment_size memory alignment size
- * @return total allocation size calculated from the actual and alignment size
+ *
+ * @return total memory allocation size
  */
 uint32_t KDI_ALIGN_MEMORY_API
-    kdi_align_memory_get_allocation_size(uint32_t uiActual_size,
-                                         uint32_t uiAlignment_size);
+kdi_align_memory_get_allocation_size(uint32_t uiUsable_size,
+                                     uint32_t uiAlignment_size);
 
 /**
  * @brief Returns the aligned memory location.
+ *
  * The total allocation size should be calculated using the
  * `kdi_align_memory_get_allocation_size` function and then the memory should
  * be allocated using this size, otherwise, there may be a segmentation fault
  * while reading/writing to the returned aligned memory.
  *
+ * `pMemory` should be a non-null pointer
+ * `uiAlignment_size` should be a non-zero value
+ *
  * @param pMemory          actual memory location
  * @param uiAlignment_size memory alignment size
+ *
  * @return aligned memory location
  */
-void KDI_ALIGN_MEMORY_API *
-    kdi_align_memory_get_aligned_address(void * pMemory,
-                                         uint32_t uiAlignment_size);
+void KDI_ALIGN_MEMORY_API*
+kdi_align_memory_get_aligned_address(void* pMemory,
+                                     uint32_t uiAlignment_size);
 
 /**
- * @brief Returns the actual memory location from a aligned memory location.
- * The memory location should be a aligned location calculated using the
+ * @brief Returns the actual memory location from an aligned memory location.
+ *
+ * The memory location should be an aligned location calculated using the
  * `kdi_align_memory_get_aligned_address` function, otherwise, the behaviour
  * is undefined.
  *
+ * `pMemory` should be a non-null pointer
+ *
  * @param pMemory aligned memory location
- * @return actual memory location
+ *
+ * @return the actual memory location
  */
-void KDI_ALIGN_MEMORY_API *
-    kdi_align_memory_get_actual_address(void * pMemory);
+void KDI_ALIGN_MEMORY_API*
+kdi_align_memory_get_actual_address(void* pMemory);
 
-#endif  /* _KDI_ALIGN_MEMORY_H_ */
+#endif /* _KDI_ALIGN_MEMORY_H_ */
