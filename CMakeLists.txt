@@ -1,11 +1,31 @@
 ##
-# @file CMakeLists.txt
-# @author Kumarjit Das (kumarjitdas1999@gmail.com)
-# @brief A simple C library for easy memory alignment.
-# @version 0.5.0
-# @date 2021-08-10
+# file: CMakeLists.txt
+# author: Kumarjit Das (kumarjitdas1999@gmail.com)
+# brief: Root CMake file of this project.
+# version: 0.5.0
+# date: 2021-12-01
 #
-# @copyright Copyright (c) 2021
+# License(MIT License):
+#
+# Copyright (c) 2021 Kumarjit Das | কুমারজিৎ দাস
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
 #
 
 cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
@@ -14,9 +34,9 @@ cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 include("CMake/setup_project.cmake")
 
 # Setting the project name, version, and other descriptions
-project(${__PROJECT_NAME}
-        VERSION      ${${__LIBRARY_NAME_UPPER}_VERSION}
-        DESCRIPTION  ${${__PROJECT_NAME_UPPER}_DESCRIPTION}
+project(${KDI_PROJECT_NAME}
+        VERSION      "${${KDI_LIBRARY_NAME_UPPER}_VERSION}"
+        DESCRIPTION  "${${KDI_PROJECT_NAME_UPPER}_DESCRIPTION}"
         HOMEPAGE_URL "https://github.com/KumarjitDas/Align-Memory.git"
         LANGUAGES    "C")
 
