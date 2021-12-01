@@ -1,3 +1,35 @@
+/**
+ * @file kdi_align_memory_get_actual_address.c
+ * @author Kumarjit Das (kumarjitdas1999@gmail.com)
+ * @brief Tests for `kdi_align_memory_get_actual_address` function.
+ * @version 0.5.0
+ * @date 2021-12-01
+ *
+ * @copyright Copyright (c) 2021
+ *
+ * License(MIT License):
+ *
+ * Copyright (c) 2021 Kumarjit Das | কুমারজিৎ দাস
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
 #include "align_memory/align_memory.h"
 
 #include <stdio.h>
@@ -5,17 +37,16 @@
 #include <stdint.h>
 #include <assert.h>
 
-int main()
-{
-    uint32_t uiAlignment_size;
-    uint32_t * pMemory = NULL;
-    uint32_t * pMemory_aligned = NULL;
-    uint32_t * pMemory_actual = NULL;
+int main() {
+    uint32_t uiUsable_size, uiAlignment_size, uiAllocation_size;
+    uint32_t *pMemory, *pMemory_aligned, *pMemory_actual;
 
     // Test 1
+    uiUsable_size = 10 * sizeof(*pMemory);
     uiAlignment_size = 1;
-    pMemory = malloc(kdi_align_memory_get_allocation_size(10,
-                                                          uiAlignment_size));
+    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+                                                             uiAlignment_size);
+    pMemory = malloc(uiAllocation_size);
     if (pMemory == NULL) return EXIT_FAILURE;
     pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
                                                            uiAlignment_size);
@@ -24,9 +55,11 @@ int main()
     free(pMemory);
 
     // Test 2
+    uiUsable_size = 10 * sizeof(*pMemory);
     uiAlignment_size = 2;
-    pMemory = malloc(kdi_align_memory_get_allocation_size(10,
-                                                          uiAlignment_size));
+    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+                                                             uiAlignment_size);
+    pMemory = malloc(uiAllocation_size);
     if (pMemory == NULL) return EXIT_FAILURE;
     pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
                                                            uiAlignment_size);
@@ -35,9 +68,11 @@ int main()
     free(pMemory);
 
     // Test 3
+    uiUsable_size = 10 * sizeof(*pMemory);
     uiAlignment_size = 4;
-    pMemory = malloc(kdi_align_memory_get_allocation_size(10,
-                                                          uiAlignment_size));
+    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+                                                             uiAlignment_size);
+    pMemory = malloc(uiAllocation_size);
     if (pMemory == NULL) return EXIT_FAILURE;
     pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
                                                            uiAlignment_size);
@@ -46,9 +81,11 @@ int main()
     free(pMemory);
 
     // Test 4
+    uiUsable_size = 10 * sizeof(*pMemory);
     uiAlignment_size = 8;
-    pMemory = malloc(kdi_align_memory_get_allocation_size(10,
-                                                          uiAlignment_size));
+    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+                                                             uiAlignment_size);
+    pMemory = malloc(uiAllocation_size);
     if (pMemory == NULL) return EXIT_FAILURE;
     pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
                                                            uiAlignment_size);
@@ -57,9 +94,50 @@ int main()
     free(pMemory);
 
     // Test 5
+    uiUsable_size = 100 * sizeof(*pMemory);
+    uiAlignment_size = 16;
+    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+                                                             uiAlignment_size);
+    pMemory = malloc(uiAllocation_size);
+    if (pMemory == NULL) return EXIT_FAILURE;
+    pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
+                                                           uiAlignment_size);
+    pMemory_actual = kdi_align_memory_get_actual_address(pMemory_aligned);
+    assert(pMemory_actual == pMemory);
+    free(pMemory);
+
+    // Test 6
+    uiUsable_size = 100 * sizeof(*pMemory);
+    uiAlignment_size = 32;
+    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+                                                             uiAlignment_size);
+    pMemory = malloc(uiAllocation_size);
+    if (pMemory == NULL) return EXIT_FAILURE;
+    pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
+                                                           uiAlignment_size);
+    pMemory_actual = kdi_align_memory_get_actual_address(pMemory_aligned);
+    assert(pMemory_actual == pMemory);
+    free(pMemory);
+
+    // Test 7
+    uiUsable_size = 100 * sizeof(*pMemory);
     uiAlignment_size = 64;
-    pMemory = malloc(kdi_align_memory_get_allocation_size(10,
-                                                          uiAlignment_size));
+    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+                                                             uiAlignment_size);
+    pMemory = malloc(uiAllocation_size);
+    if (pMemory == NULL) return EXIT_FAILURE;
+    pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
+                                                           uiAlignment_size);
+    pMemory_actual = kdi_align_memory_get_actual_address(pMemory_aligned);
+    assert(pMemory_actual == pMemory);
+    free(pMemory);
+
+    // Test 8
+    uiUsable_size = 1000 * sizeof(*pMemory);
+    uiAlignment_size = 128;
+    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+                                                             uiAlignment_size);
+    pMemory = malloc(uiAllocation_size);
     if (pMemory == NULL) return EXIT_FAILURE;
     pMemory_aligned = kdi_align_memory_get_aligned_address(pMemory,
                                                            uiAlignment_size);
