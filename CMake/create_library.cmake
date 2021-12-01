@@ -1,7 +1,37 @@
-message(STATUS "${__STATUS_VARIABLE} Creating library: ${__LIBRARY_NAME}.")
+##
+# file: create_library.cmake
+# author: Kumarjit Das (kumarjitdas1999@gmail.com)
+# brief: Creates the library.
+# version: 0.5.0
+# date: 2021-12-01
+#
+# License(MIT License):
+#
+# Copyright (c) 2021 Kumarjit Das | কুমারজিৎ দাস
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
 
 # Adding the main library
-add_library(${__LIBRARY_NAME} "")
+add_library(${KDI_LIBRARY_NAME} "")
+write_status("Creating library: ${KDI_LIBRARY_NAME}.")
 
 # Setting an alias in `KDI` namespace
-add_library("KDI::${__LIBRARY_NAME}" ALIAS ${__LIBRARY_NAME})
+add_library("KDI::${KDI_LIBRARY_NAME}" ALIAS ${KDI_LIBRARY_NAME})
+write_status("Adding alias to the library: KDI::${KDI_LIBRARY_NAME}.")
