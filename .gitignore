@@ -52,8 +52,8 @@ Mkfile.old
 dkms.conf
 
 # CMake Build directory
-build/*
-Build/*
+build*/*
+Build*/*
 
 # VS Code project
 .vscode/*
