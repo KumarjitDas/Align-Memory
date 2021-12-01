@@ -1,7 +1,8 @@
 @REM
-@REM @file build.bat
+@REM @file configure-all.bat
 @REM @author Kumarjit Das (kumarjitdas1999@gmail.com)
-@REM @brief A batch script to build this project using CMake.
+@REM @brief A batch script to configure this project, in both static and
+@REM        dynamic, using CMake.
 @REM @version 0.5.0
 @REM @date 2021-12-01
 @REM
@@ -35,14 +36,19 @@
 SETLOCAL
 SETLOCAL ENABLEEXTENSIONS
 
-SET parallel=%~1
-SET builddir=%~2
-SET config=%~3
+SET compiler=%~1
+SET generator=%~2
+SET builddir=%~3
 
-IF "%parallel%"=="" (SET parallel=2)
-IF "%builddir%"=="" (SET builddir=Build)
-IF "%config%"=="" (SET config=Debug)
+IF "%compiler%"=="" (
+    SET compiler=clang
+)
+IF "%generator%"=="" (
+    SET generator="Ninja Multi-Config"
+)
+IF "%builddir%"=="" (
+    SET builddir=Build
+)
 
-ECHO [KDI Build] Building %builddir% in %config% configuration...
-
-cmake --build %builddir% --config %config% --parallel %parallel%
+CALL .\Scripts\configure.bat %compiler% %generator% ON %builddir%-Shared
+CALL .\Scripts\configure.bat %compiler% %generator% OFF %builddir%-Static

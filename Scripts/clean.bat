@@ -1,7 +1,8 @@
 @REM
-@REM @file build.bat
+@REM @file clean.bat
 @REM @author Kumarjit Das (kumarjitdas1999@gmail.com)
-@REM @brief A batch script to build this project using CMake.
+@REM @brief A batch script clean all the build outputs and CMake cache of this
+@REM        project.
 @REM @version 0.5.0
 @REM @date 2021-12-01
 @REM
@@ -35,14 +36,28 @@
 SETLOCAL
 SETLOCAL ENABLEEXTENSIONS
 
-SET parallel=%~1
-SET builddir=%~2
-SET config=%~3
+SET builddir=%~1
 
-IF "%parallel%"=="" (SET parallel=2)
 IF "%builddir%"=="" (SET builddir=Build)
-IF "%config%"=="" (SET config=Debug)
 
-ECHO [KDI Build] Building %builddir% in %config% configuration...
+IF EXIST "%builddir%\" (
+    IF EXIST "%builddir%\CMakeCache.txt" (
+        DEL /Q "%builddir%\CMakeCache.txt"
+        ECHO [KDI Clean] CMake cache ^("%builddir%\CMakeCache.txt"^) deleted.
+    )
 
-cmake --build %builddir% --config %config% --parallel %parallel%
+    FOR %%a IN (bin lib Tests) DO (
+        IF EXIST "%builddir%\%%a\" (
+            FOR %%b IN (Debug Release MinSizeRel RelWithDebInfo) DO (
+                IF EXIST "%builddir%\%%a\%%b\" (
+                    FOR /F "delims=" %%c IN (
+                        'DIR /B /S "%builddir%\%%a\%%b\"'
+                    ) DO (
+                        DEL /Q "%%c"
+                        ECHO [KDI Clean] CMake output file, "%%c", deleted.
+                    )
+                )
+            )
+        )
+    )
+)

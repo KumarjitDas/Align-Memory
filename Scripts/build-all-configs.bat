@@ -1,7 +1,8 @@
 @REM
-@REM @file build.bat
+@REM @file build-all-configs.bat
 @REM @author Kumarjit Das (kumarjitdas1999@gmail.com)
-@REM @brief A batch script to build this project using CMake.
+@REM @brief A batch script to build this project, both static and dynamic, in
+@REM        all possible configurations using CMake.
 @REM @version 0.5.0
 @REM @date 2021-12-01
 @REM
@@ -37,12 +38,10 @@ SETLOCAL ENABLEEXTENSIONS
 
 SET parallel=%~1
 SET builddir=%~2
-SET config=%~3
 
 IF "%parallel%"=="" (SET parallel=2)
 IF "%builddir%"=="" (SET builddir=Build)
-IF "%config%"=="" (SET config=Debug)
 
-ECHO [KDI Build] Building %builddir% in %config% configuration...
-
-cmake --build %builddir% --config %config% --parallel %parallel%
+FOR %%x IN (Shared Static) DO (
+    CALL .\Scripts\build-configs.bat %parallel% %builddir%-%%x
+)

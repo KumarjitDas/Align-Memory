@@ -1,7 +1,8 @@
 @REM
-@REM @file build.bat
+@REM @file clean-all.bat
 @REM @author Kumarjit Das (kumarjitdas1999@gmail.com)
-@REM @brief A batch script to build this project using CMake.
+@REM @brief A batch script clean all the build outputs and CMake cache of this
+@REM        project, both static and dynamic.
 @REM @version 0.5.0
 @REM @date 2021-12-01
 @REM
@@ -35,14 +36,10 @@
 SETLOCAL
 SETLOCAL ENABLEEXTENSIONS
 
-SET parallel=%~1
-SET builddir=%~2
-SET config=%~3
+SET builddir=%~1
 
-IF "%parallel%"=="" (SET parallel=2)
 IF "%builddir%"=="" (SET builddir=Build)
-IF "%config%"=="" (SET config=Debug)
 
-ECHO [KDI Build] Building %builddir% in %config% configuration...
-
-cmake --build %builddir% --config %config% --parallel %parallel%
+FOR %%x IN (Shared Static) DO (
+    CALL .\Scripts\clean.bat %builddir%-%%x
+)
