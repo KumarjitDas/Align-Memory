@@ -57,6 +57,7 @@ Build*/*
 
 # VS Code project
 .vscode/*
+*.code-workspace
 
 # Clangd cache
 .cache/*
