@@ -2,7 +2,7 @@
 # file: package_configuration.cmake
 # author: Kumarjit Das (kumarjitdas1999@gmail.com)
 # brief: Create the package configurations for the project.
-# version: 0.5.0
+# version: 0.6.0
 # date: 2021-12-01
 #
 # License(MIT License):

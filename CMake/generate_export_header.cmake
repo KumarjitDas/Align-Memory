@@ -2,7 +2,7 @@
 # file: generate_export_header.cmake
 # author: Kumarjit Das (kumarjitdas1999@gmail.com)
 # brief: Generate the export header for public use.
-# version: 0.5.0
+# version: 0.6.0
 # date: 2021-12-01
 #
 # License(MIT License):

@@ -3,7 +3,7 @@
 @REM @author Kumarjit Das (kumarjitdas1999@gmail.com)
 @REM @brief A batch script clean all the build outputs and CMake cache of this
 @REM        project, both static and dynamic.
-@REM @version 0.5.0
+@REM @version 0.6.0
 @REM @date 2021-12-01
 @REM
 @REM @copyright Copyright (c) 2021

@@ -2,7 +2,7 @@
  * @file example-001.c
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
  * @brief An example for `Align-Memory` library functions.
- * @version 0.5.0
+ * @version 0.6.0
  * @date 2021-12-01
  *
  * @copyright Copyright (c) 2021

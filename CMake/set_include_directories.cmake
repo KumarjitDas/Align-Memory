@@ -2,7 +2,7 @@
 # file: set_include_directories.cmake
 # author: Kumarjit Das (kumarjitdas1999@gmail.com)
 # brief: Set the public include directories of this project.
-# version: 0.5.0
+# version: 0.6.0
 # date: 2021-12-01
 #
 # License(MIT License):

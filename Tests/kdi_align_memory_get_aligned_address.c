@@ -2,7 +2,7 @@
  * @file kdi_align_memory_get_aligned_address.c
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
  * @brief Tests for `kdi_align_memory_get_aligned_address` function.
- * @version 0.5.0
+ * @version 0.6.0
  * @date 2021-12-01
  *
  * @copyright Copyright (c) 2021
