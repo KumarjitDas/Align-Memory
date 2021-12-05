@@ -8,7 +8,6 @@ A simple C library for easy memory alignment.
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Installation](#installation)
-  - [Usage](#usage)
   - [Roadmap](#roadmap)
   - [Contributing](#contributing)
   - [Naming Convension](#naming-convension)
@@ -21,29 +20,26 @@ A simple C library for easy memory alignment.
 
 ## Description
 
-This is a simple dynamic memory-alignment C library. It contains convenience
-functions for *getting aligned-memory allocation size*,
-*aligned-memory location*, and *actual memory location from aligned-memory*.
+This is a simple dynamic memory-alignment C library. It contains convenience functions for *getting aligned-memory
+allocation size*, *aligned-memory location*, and *actual memory location from aligned-memory*.
 
-See the list of features and functions implemented till now in
-[Project Status](#project-status).
+See the list of features and functions implemented till now in [Project Status](#project-status).
 
 ## Installation
 
 To get started with this project, download and install the following.
 
 - Download and install **git**
-  - If you use *Windows*, then go to [this link](https://git-scm.com/downloads)
-    and download and install the suitable version.
-  - If you use any stable version of *Debian/Ubuntu* then run this command in
-    your terminal
+  - If you use *Windows*, then go to [this link](https://git-scm.com/downloads) and download and install the suitable
+    version.
+  - If you use any stable version of *Debian/Ubuntu* then run this command in your terminal
 
     ```sh
     sudo apt-get install git
     ```
 
-  - If you use *macOS* then install [homebrew](https://brew.sh/) if you don't
-    already have it, then run this command in your terminal
+  - If you use *macOS* then install [homebrew](https://brew.sh/) if you don't already have it, then run this command
+    in your terminal
 
     ```sh
     brew install git
@@ -52,16 +48,15 @@ To get started with this project, download and install the following.
 - Run the command to clone this repository
 
   ```sh
-  git clone https://github.com/KumarjitDas/Memory.git
+  git clone https://github.com/KumarjitDas/Align-Memory.git
   ```
 
 - Download and install a **C** compiler (*clang* or *gcc*)
-  - If you use *Windows 10* then download and install a suitable version of
-    **clang** from [this](https://releases.llvm.org/download.html) link. For
-    **gcc**, use the suitable *MinGW* version from
+  - If you use *Windows 10* then download and install a suitable version of **clang** from
+    [this](https://releases.llvm.org/download.html) link. For **gcc**, use the suitable *MinGW* version from
     [this](http://mingw-w64.org/doku.php/download) link.
-  - If you use any stable version of *Debian/Ubuntu* then run these commands in
-    your terminal to download and install **clang** and **gcc** compilers
+  - If you use any stable version of *Debian/Ubuntu* then run these commands in your terminal to download and install
+    **clang** and **gcc** compilers
 
     ```sh
     sudo apt install clang
@@ -71,8 +66,7 @@ To get started with this project, download and install the following.
     sudo apt install gcc
     ```
 
-  - In *macOS*, **clang** is the default **C** compiler. To download and
-    install gcc, run this command in your terminal
+  - In *macOS*, **clang** is the default **C** compiler. To download and install gcc, run this command in your terminal
 
     ```sh
     brew install gcc
@@ -81,8 +75,7 @@ To get started with this project, download and install the following.
 - Download and install **Ninja** build system
   - If you use *Windows 10* then download and install **Ninja** from
     [here](https://github.com/ninja-build/ninja/releases).
-  - If you use any stable version of *Debian/Ubuntu* then run this command in
-    your terminal
+  - If you use any stable version of *Debian/Ubuntu* then run this command in your terminal
 
     ```sh
     sudo apt-get install ninja-build
@@ -95,10 +88,8 @@ To get started with this project, download and install the following.
     ```
 
 - Download and install **CMake** build automation tool
-  - If you use *Windows 10* then download and install **CMake** from
-    [here](https://cmake.org/download/).
-  - If you use any stable version of *Debian/Ubuntu* then run this command in
-    your terminal
+  - If you use *Windows 10* then download and install **CMake** from [here](https://cmake.org/download/).
+  - If you use any stable version of *Debian/Ubuntu* then run this command in your terminal
 
     ```sh
     sudo apt-get -y install cmake
@@ -110,23 +101,17 @@ To get started with this project, download and install the following.
     brew install cmake
     ```
 
-## Usage
-
-Usage of this project will be listed soon.
-
 ## Roadmap
 
-See the [open issues](https://github.com/KumarjitDas/Memory/issues) for a
-list of proposed features/functionalities (and known issues).
+See the [open issues](https://github.com/KumarjitDas/Align-Memory/issues) for a list of proposed
+features/functionalities (and known issues).
 
-The list of features and functions implemented till now is given in
-[Project Status](#project-status).
+The list of features and functions implemented till now is given in [Project Status](#project-status).
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place
-to learn, inspire, and create. Any contributions you make are greatly
-appreciated.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any
+contributions you make are greatly appreciated.
 
 - Fork this Project
 - Create your *Feature Branch*
@@ -155,8 +140,7 @@ The naming convension used in this project will be listed soon.
 
 ## License
 
-This project is distributed under the **MIT License**. See [LICENSE](LICENSE)
-for more information.
+This project is distributed under the **MIT License**. See [LICENSE](LICENSE) for more information.
 
 ## Project Status
 
@@ -168,9 +152,8 @@ List of functionalities/features implemented so far.
 
 ## Acknowledgment
 
-I appreciate these websites which helped me to make such good **README**
-file, and helped me to learn about project versioning and keeping
-**CHANGELOG**.
+I appreciate these websites which helped me to make such good **README** file, and helped me to learn about project
+versioning and keeping **CHANGELOG**.
 
 - [Make a README](https://www.makeareadme.com/)
 - [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
@@ -193,15 +176,11 @@ Project link:
 This project uses **MAJOR**, **MINOR**, and **PATCH** version numbers for
 versioning (v*MAJOR.MINOR.PATCH*).
 
-- **MAJOR** version number indicates *new changes which may be incompatible*
-  *with older versions*.
-- **MINOR** version number indicates *addition of backwards-compatible*
-  *features*.
-- **PATCH** version number indicates *backwards-compatible bug fixes*,
-  or minor mistake fixes like *spelling*, *character cases*, *punctuations*,
-  and *indentation*.
+- **MAJOR** version number indicates *new changes which may be incompatible with older versions*.
+- **MINOR** version number indicates *addition of backwards-compatible features*.
+- **PATCH** version number indicates *backwards-compatible bug fixes*, or minor mistake fixes like *spelling*,
+  *character cases*, *punctuations*, and *indentation*.
 
 ## Changelog
 
-The [Changelog](CHANGELOG.md) file contains all the information about the
-changes made to this project till now.
+The [Changelog](CHANGELOG.md) file contains all the information about the changes made to this project till now.
