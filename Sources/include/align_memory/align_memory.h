@@ -3,7 +3,7 @@
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
  * @brief Contains all `Align-Memory` library function declarations.
  * @version 0.6.0
- * @date 2021-12-01
+ * @date 2021-12-08
  *
  * @copyright Copyright (c) 2021
  *
@@ -28,6 +28,49 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
+ */
+
+/**
+ * The alignment-offset size is stored at the front of the starting location
+ * of the usable memory.
+ *
+ * Lets say, usable size of the memory is 8 bytes and
+ *           alignment size is 4 bytes
+ * The memory allocation size will be,
+ *     (KDI align-memroy offset size +
+ *      alignment size - 1 +
+ *      usable memory size)
+ * which evaluates to 12 bytes.
+ *
+ *     actual starting address
+ *     of the allocated memory,
+ *     which can be freed
+ *      |
+ *     [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][  ][  ]
+ *      0  1  2  3  4  5  6  7  8  9  10  11  -  indices
+ *
+ * By considering the above indices also as memory adresses,
+ * the usable memory address could be any index between 0 and 3 (including 0
+ * and 3). If the usable memory address starts from 2, then the offset size,
+ * which is 2, will be stored in 1.
+ *
+ *     actual starting address
+ *     of the allocated memory
+ *      /
+ *      |  offset size
+ *      |  /
+ *      |  | starting address of the usable memory
+ *      |  |  |
+ *     [ ][2][x][x][x][x][x][x][x][x][  ][  ]
+ *      0  1  2  3  4  5  6  7  8  9  10  11
+ *      \_____|____________________/
+ *         |            |
+ *       offset   usable memory
+ *
+ * ** Why subtract 1? It is explained in the developer notes of the
+ *    `kdi_align_memory_get_allocation_size` function later in this file.
+ * ** More explanations are given in the developer notes of the functions of
+ *    this file.
  */
 
 #ifndef _KDI_ALIGN_MEMORY_H_
