@@ -3,7 +3,7 @@
 # author: Kumarjit Das (kumarjitdas1999@gmail.com)
 # brief: Creates tests from C source files.
 # version: 0.6.0
-# date: 2021-12-01
+# date: 2021-12-08
 #
 # License(MIT License):
 #
@@ -31,9 +31,9 @@
 write_status("'Tests' subdirectory added.")
 
 # Set the list of test programs
-set(TEST_LIST "kdi_align_memory_get_allocation_size"
-              "kdi_align_memory_get_aligned_address"
-              "kdi_align_memory_get_actual_address")
+set(TEST_LIST "kdi_get_size_for_memory_alignment"
+              "kdi_align_memory"
+              "kdi_get_actual_memory_from_aligned_memory")
 
 # Loop through each item in the tests list
 foreach(TEST_ITEM ${TEST_LIST})

@@ -1,9 +1,9 @@
 /**
- * @file kdi_align_memory_get_allocation_size.c
+ * @file kdi_get_size_for_memory_alignment.c
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief Tests for `kdi_align_memory_get_allocation_size` function.
+ * @brief Tests for `kdi_get_size_for_memory_alignment` function.
  * @version 0.6.0
- * @date 2021-12-01
+ * @date 2021-12-08
  *
  * @copyright Copyright (c) 2021
  *
@@ -43,56 +43,56 @@ int main() {
     // Test 1
     uiUsable_size = 10;
     uiAlignment_size = 1;
-    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
                                                              uiAlignment_size);
     assert(uiAllocation_size == 11);
 
     // Test 2
     uiUsable_size = 10;
     uiAlignment_size = 2;
-    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
                                                              uiAlignment_size);
     assert(uiAllocation_size == 12);
 
     // Test 3
     uiUsable_size = 10;
     uiAlignment_size = 4;
-    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
                                                              uiAlignment_size);
     assert(uiAllocation_size == 14);
 
     // Test 4
     uiUsable_size = 10;
     uiAlignment_size = 8;
-    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
                                                              uiAlignment_size);
     assert(uiAllocation_size == 18);
 
     // Test 5
     uiUsable_size = 100;
     uiAlignment_size = 16;
-    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
                                                              uiAlignment_size);
     assert(uiAllocation_size == 116);
 
     // Test 6
     uiUsable_size = 100;
     uiAlignment_size = 32;
-    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
                                                              uiAlignment_size);
     assert(uiAllocation_size == 132);
 
     // Test 7
     uiUsable_size = 100;
     uiAlignment_size = 64;
-    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
                                                              uiAlignment_size);
     assert(uiAllocation_size == 164);
 
     // Test 8
     uiUsable_size = 1000;
     uiAlignment_size = 128;
-    uiAllocation_size = kdi_align_memory_get_allocation_size(uiUsable_size,
+    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
                                                              uiAlignment_size);
     assert(uiAllocation_size == 1128);
 

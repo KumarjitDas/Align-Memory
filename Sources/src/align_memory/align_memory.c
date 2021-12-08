@@ -33,15 +33,15 @@
 #include "align_memory/align_memory.h"
 #include "utility.h"
 
-uint32_t kdi_align_memory_get_allocation_size(uint32_t uiUsable_size,
-                                              uint32_t uiAlignment_size) {
+uint64_t kdi_get_size_for_memory_alignment(uint64_t uiUsable_size,
+                                           uint64_t uiAlignment_size) {
     return _KDI_ALIGN_MEMORY_OFFSET_SIZE +
            uiAlignment_size - 1 +
            uiUsable_size;
 }
 
-void *kdi_align_memory_get_aligned_address(void *pMemory,
-                                           uint32_t uiAlignment_size) {
+void *kdi_align_memory(void *pMemory,
+                       uint64_t uiAlignment_size) {
     --uiAlignment_size;
     uintmax_t umOffset_size = _KDI_ALIGN_MEMORY_OFFSET_SIZE +
                               uiAlignment_size;
@@ -55,7 +55,7 @@ void *kdi_align_memory_get_aligned_address(void *pMemory,
     return pAligned_memory;
 }
 
-void *kdi_align_memory_get_actual_address(void *pMemory) {
+void *kdi_get_actual_memory_from_aligned_memory(void *pMemory) {
     _kdi_offset_t *pOffset_size_memory = (_kdi_offset_t *)pMemory - 1;
     uintmax_t umOffset_size = (uintmax_t)*pOffset_size_memory;
 

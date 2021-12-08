@@ -146,9 +146,9 @@ This project is distributed under the **MIT License**. See [LICENSE](LICENSE) fo
 
 List of functionalities/features implemented so far.
 
-- *kdi_align_memory_get_allocation_size*
-- *kdi_align_memory_get_aligned_address*
-- *kdi_align_memory_get_actual_address*
+- *kdi_get_size_for_memory_alignment*
+- *kdi_align_memory*
+- *kdi_get_actual_memory_from_aligned_memory*
 
 ## Acknowledgment
 

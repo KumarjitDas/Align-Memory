@@ -3,7 +3,7 @@
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
  * @brief An example for `Align-Memory` library functions.
  * @version 0.6.0
- * @date 2021-12-01
+ * @date 2021-12-08
  *
  * @copyright Copyright (c) 2021
  *
@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
     uint32_t uiUsable_length = (uint32_t)strtol(argv[1], NULL, 10);
     uint32_t uiUsable_size = uiUsable_length * sizeof(int32_t);
     uint32_t uiAlignment_size = (uint32_t)strtol(argv[2], NULL, 10);
-    uint32_t uiAllocation_size = kdi_align_memory_get_allocation_size(
+    uint32_t uiAllocation_size = kdi_get_size_for_memory_alignment(
         uiUsable_size,
         uiAlignment_size);
     int32_t *pArray = malloc(uiAllocation_size);
@@ -63,10 +63,9 @@ int main(int argc, char **argv) {
         fprintf(stderr, "ERROR: Could not allocate memory!\n");
         return EXIT_FAILURE;
     }
-    int32_t *pAligned_array = kdi_align_memory_get_aligned_address(
-        pArray,
-        uiAlignment_size);
-    int32_t *pActual_array = kdi_align_memory_get_actual_address(
+    int32_t *pAligned_array = kdi_align_memory(pArray,
+                                               uiAlignment_size);
+    int32_t *pActual_array = kdi_get_actual_memory_from_aligned_memory(
         pAligned_array);
 
     printf(

@@ -68,7 +68,7 @@
  *       offset   usable memory
  *
  * ** Why subtract 1? It is explained in the developer notes of the
- *    `kdi_align_memory_get_allocation_size` function later in this file.
+ *    `kdi_get_size_for_memory_alignment` function later in this file.
  * ** More explanations are given in the developer notes of the functions of
  *    this file.
  */
@@ -98,15 +98,15 @@
  *
  * @return total memory allocation size
  */
-uint32_t KDI_ALIGN_MEMORY_API
-kdi_align_memory_get_allocation_size(uint32_t uiUsable_size,
-                                     uint32_t uiAlignment_size);
+uint64_t KDI_ALIGN_MEMORY_API
+kdi_get_size_for_memory_alignment(uint64_t uiUsable_size,
+                                  uint64_t uiAlignment_size);
 
 /**
  * @brief Returns the aligned memory location.
  *
  * The total allocation size should be calculated using the
- * `kdi_align_memory_get_allocation_size` function and then the memory should
+ * `kdi_get_size_for_memory_alignment` function and then the memory should
  * be allocated using this size, otherwise, there may be a segmentation fault
  * while reading/writing to the returned aligned memory.
  *
@@ -119,14 +119,14 @@ kdi_align_memory_get_allocation_size(uint32_t uiUsable_size,
  * @return aligned memory location
  */
 void KDI_ALIGN_MEMORY_API*
-kdi_align_memory_get_aligned_address(void* pMemory,
-                                     uint32_t uiAlignment_size);
+kdi_align_memory(void* pMemory,
+                 uint64_t uiAlignment_size);
 
 /**
  * @brief Returns the actual memory location from an aligned memory location.
  *
  * The memory location should be an aligned location calculated using the
- * `kdi_align_memory_get_aligned_address` function, otherwise, the behaviour
+ * `kdi_align_memory` function, otherwise, the behaviour
  * is undefined.
  *
  * `pMemory` should be a non-null pointer
@@ -136,6 +136,6 @@ kdi_align_memory_get_aligned_address(void* pMemory,
  * @return the actual memory location
  */
 void KDI_ALIGN_MEMORY_API*
-kdi_align_memory_get_actual_address(void* pMemory);
+kdi_get_actual_memory_from_aligned_memory(void* pMemory);
 
 #endif /* _KDI_ALIGN_MEMORY_H_ */
