@@ -3,7 +3,7 @@
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
  * @brief Contains all utility declarations of this library.
  * @version 0.6.0
- * @date 2021-12-01
+ * @date 2021-12-08
  *
  * @copyright Copyright (c) 2021
  *
@@ -35,8 +35,8 @@
 
 #include <stdint.h>
 
-typedef uint8_t ___kdi_offset_t;
+typedef uint8_t _kdi_offset_t;
 
-#define ___KDI_ALIGN_MEMORY_OFFSET_SIZE sizeof(___kdi_offset_t)
+#define _KDI_ALIGN_MEMORY_OFFSET_SIZE sizeof(_kdi_offset_t)
 
 #endif /* _KDI_ALIGN_MEMORY_UTILITY_H_ */
