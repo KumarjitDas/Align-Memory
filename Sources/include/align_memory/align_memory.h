@@ -3,7 +3,7 @@
  * \author Kumarjit Das (kumarjitdas1999@gmail.com)
  * \brief Contains all `Align-Memory` library function declarations/prototypes
  *        and their documentations.
- * \version 0.8.0
+ * \version 0.9.0
  * \date 2021-12-10
  *
  * \copyright Copyright (c) 2021
@@ -152,6 +152,8 @@ kdi_get_aligned_memory_forward(void* pMemory,
  * \warning `pMemory` should be a non-null pointer
  * \warning `u64Alignment_size` should be a non-zero value between 1 and 128
  *          (including 1 and 128) and it should be a power of 2
+ *
+ * \since v0.9.0
  */
 void KDI_ALIGN_MEMORY_API*
 kdi_get_aligned_memory_backward(void* pMemory,

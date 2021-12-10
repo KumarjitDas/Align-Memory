@@ -5,10 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.1/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 
-## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v0.8.0...HEAD)
+## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v0.9.0...HEAD)
 
 - *CPack* packagitg support
 - *vcpkg* packagitg support
+
+## [0.9.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.8.0...v0.9.0) - 2021-12-10
+
+### Added
+
+- `kdi_get_aligned_memory_backward` public API function
+  [declaration/prototype](https://github.com/KumarjitDas/Align-Memory/blob/v0.9.0/Sources/include/align_memory/align_memory.h)
+  and [definition](https://github.com/KumarjitDas/Align-Memory/blob/v0.9.0/Sources/src/align_memory/align_memory.c)
+- Tests for `kdi_get_aligned_memory_backward` function in
+  [kdi_get_aligned_memory_backward.c](https://github.com/KumarjitDas/Align-Memory/blob/v0.9.0/Tests/kdi_get_aligned_memory_backward.c) file
+- Documentations for `kdi_get_aligned_memory_forward` and `kdi_get_aligned_memory_backward` functions
+- Doxygen style documentations
+- [example-002.c](https://github.com/KumarjitDas/Align-Memory/blob/v0.9.0/Examples/example-002.c) file
+
+### Removed
+
+- Old style documentation
 
 ## [0.8.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.7.0...v0.8.0) - 2021-12-10
 
@@ -17,10 +34,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.1/),
 - `KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT` architecture macro in public header and all source files
 - `NOTEs` for the users of this library in the function documentations
 - `kdi_get_aligned_memory_forward` public API function
-  [declaration/prototype](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Sources/src/align_memory/align_memory.c)
-  and [definition](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Sources/include/align_memory/align_memory.h)
+  [declaration/prototype](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Sources/include/align_memory/align_memory.h)
+  and [definition](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Sources/src/align_memory/align_memory.c)
 - Tests for `kdi_get_aligned_memory_forward` function in
-  [kdi_get_aligned_memory_forward.c](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Tests/kdi_get_aligned_memory_forward.c)
+  [kdi_get_aligned_memory_forward.c](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Tests/kdi_get_aligned_memory_forward.c) file
 
 ### Changed
 

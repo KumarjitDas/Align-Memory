@@ -2,7 +2,7 @@
  * \file kdi_get_aligned_memory_backward.c
  * \author Kumarjit Das (kumarjitdas1999@gmail.com)
  * \brief Tests for `kdi_get_aligned_memory_backward` function.
- * \version 0.8.0
+ * \version 0.9.0
  * \date 2021-12-10
  *
  * \copyright Copyright (c) 2021
