@@ -1,11 +1,11 @@
 /**
- * @file utility.h
- * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief Contains all utility declarations of this library.
- * @version 0.8.0
- * @date 2021-12-10
+ * \file utility.h
+ * \author Kumarjit Das (kumarjitdas1999@gmail.com)
+ * \brief Contains all utility declarations of this library.
+ * \version 0.8.0
+ * \date 2021-12-10
  *
- * @copyright Copyright (c) 2021
+ * \copyright Copyright (c) 2021
  *
  * License(MIT License):
  *

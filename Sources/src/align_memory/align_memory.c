@@ -1,11 +1,11 @@
 /**
- * @file align_memory.c
- * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief Contains definitions of all the library functions(public).
- * @version 0.8.0
- * @date 2021-12-10
+ * \file align_memory.c
+ * \author Kumarjit Das (kumarjitdas1999@gmail.com)
+ * \brief Contains definitions of all the library functions(public).
+ * \version 0.8.0
+ * \date 2021-12-10
  *
- * @copyright Copyright (c) 2021
+ * \copyright Copyright (c) 2021
  *
  * License(MIT License):
  *

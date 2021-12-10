@@ -1,11 +1,11 @@
 /**
- * @file example-001.c
- * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief An example for `Align-Memory` library functions.
- * @version 0.8.0
- * @date 2021-12-10
+ * \file example-001.c
+ * \author Kumarjit Das (kumarjitdas1999@gmail.com)
+ * \brief An example for `Align-Memory` library functions.
+ * \version 0.8.0
+ * \date 2021-12-10
  *
- * @copyright Copyright (c) 2021
+ * \copyright Copyright (c) 2021
  *
  * License(MIT License):
  *

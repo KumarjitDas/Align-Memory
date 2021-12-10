@@ -1,11 +1,11 @@
 /**
- * @file kdi_align_memory.c
- * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief Tests for `kdi_align_memory` function.
- * @version 0.8.0
- * @date 2021-12-10
+ * \file kdi_align_memory.c
+ * \author Kumarjit Das (kumarjitdas1999@gmail.com)
+ * \brief Tests for `kdi_align_memory` function.
+ * \version 0.8.0
+ * \date 2021-12-10
  *
- * @copyright Copyright (c) 2021
+ * \copyright Copyright (c) 2021
  *
  * License(MIT License):
  *

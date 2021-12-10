@@ -1,11 +1,11 @@
 /**
- * @file kdi_get_aligned_memory_forward.c
- * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief Tests for `kdi_get_aligned_memory_forward` function.
- * @version 0.8.0
- * @date 2021-12-10
+ * \file kdi_get_aligned_memory_forward.c
+ * \author Kumarjit Das (kumarjitdas1999@gmail.com)
+ * \brief Tests for `kdi_get_aligned_memory_forward` function.
+ * \version 0.8.0
+ * \date 2021-12-10
  *
- * @copyright Copyright (c) 2021
+ * \copyright Copyright (c) 2021
  *
  * License(MIT License):
  *
