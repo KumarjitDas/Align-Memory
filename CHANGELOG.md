@@ -5,10 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.1/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 
-## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v0.6.0...HEAD)
+## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v0.7.0...HEAD)
 
 - *CPack* packagitg support
 - *vcpkg* packagitg support
+
+## [0.7.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.6.0...v0.7.0) - 2021-12-10
+
+### Added
+
+- Documentation explaining explaining how memory alignment happens in
+  [align_memory.c](https://github.com/KumarjitDas/Align-Memory/blob/v0.7.0/Sources/src/align_memory/align_memory.c)
+  file
+
+### Changed
+
+- Public function names
+  - `kdi_align_memory_get_allocation_size` to `kdi_get_size_for_memory_alignment`
+  - `kdi_align_memory_get_aligned_address` to `kdi_align_memory`
+  - `kdi_align_memory_get_actual_address` to `kdi_get_actual_memory_from_aligned_memory`
+
+### Removed
+
+- Triple underscores from private names
+- Unnecessary comments in private source files
 
 ## [0.6.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.5.0...v0.6.0) - 2021-12-05
 
