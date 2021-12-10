@@ -1,7 +1,8 @@
 /**
  * @file align_memory.h
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief Contains all `Align-Memory` library function declarations.
+ * @brief Contains all `Align-Memory` library function declarations/prototypes
+ *        and their documentations.
  * @version 0.7.0
  * @date 2021-12-10
  *
@@ -81,6 +82,16 @@
 
 #include <stdint.h>
 
+#if defined(INT64_MAX) && defined(INT64_MIN)
+#ifndef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+#define KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+#endif /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT */
+#endif /* defined(INT64_MAX) && defined(INT64_MIN) */
+
+// #undef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
+#ifdef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
 /**
  * @brief Returns the allocation size from the actual and alignment size.
  *
@@ -91,16 +102,16 @@
  * which is the new memory allocation size. The alignment size should be any
  * of these values: 1, 2, 4, 8, 16, 32, 64, or 128.
  *
- * `uiUsable_size` and `uiAlignment_size` should be non-zero values
+ * NOTE: `u64Usable_size` and `u64Alignment_size` should be non-zero values
  *
- * @param uiUsable_size    actual memory size
- * @param uiAlignment_size memory alignment size
+ * @param u64Usable_size    actual memory size
+ * @param u64Alignment_size memory alignment size
  *
  * @return total memory allocation size
  */
 uint64_t KDI_ALIGN_MEMORY_API
-kdi_get_size_for_memory_alignment(uint64_t uiUsable_size,
-                                  uint64_t uiAlignment_size);
+kdi_get_size_for_memory_alignment(uint64_t u64Usable_size,
+                                  uint64_t u64Alignment_size);
 
 /**
  * @brief Returns the aligned memory location.
@@ -110,26 +121,25 @@ kdi_get_size_for_memory_alignment(uint64_t uiUsable_size,
  * be allocated using this size, otherwise, there may be a segmentation fault
  * while reading/writing to the returned aligned memory.
  *
- * `pMemory` should be a non-null pointer
- * `uiAlignment_size` should be a non-zero value
+ * NOTE: `pMemory` should be a non-null pointer
+ * NOTE: `u64Alignment_size` should be a non-zero value
  *
- * @param pMemory          actual memory location
- * @param uiAlignment_size memory alignment size
+ * @param pMemory           actual memory location
+ * @param u64Alignment_size memory alignment size
  *
  * @return aligned memory location
  */
 void KDI_ALIGN_MEMORY_API*
 kdi_align_memory(void* pMemory,
-                 uint64_t uiAlignment_size);
+                 uint64_t u64Alignment_size);
 
 /**
  * @brief Returns the actual memory location from an aligned memory location.
  *
  * The memory location should be an aligned location calculated using the
- * `kdi_align_memory` function, otherwise, the behaviour
- * is undefined.
+ * `kdi_align_memory` function, otherwise, the behaviour is undefined.
  *
- * `pMemory` should be a non-null pointer
+ * NOTE: `pMemory` should be a non-null pointer
  *
  * @param pMemory aligned memory location
  *
@@ -137,5 +147,8 @@ kdi_align_memory(void* pMemory,
  */
 void KDI_ALIGN_MEMORY_API*
 kdi_get_actual_memory_from_aligned_memory(void* pMemory);
+
+#else  /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT not defined */
+#endif /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT */
 
 #endif /* _KDI_ALIGN_MEMORY_H_ */
