@@ -2,8 +2,8 @@
 # file: CMakeLists.txt
 # author: Kumarjit Das (kumarjitdas1999@gmail.com)
 # brief: Creates tests from C source files.
-# version: 0.6.0
-# date: 2021-12-08
+# version: 0.7.0
+# date: 2021-12-10
 #
 # License(MIT License):
 #

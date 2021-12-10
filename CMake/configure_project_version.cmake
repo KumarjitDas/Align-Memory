@@ -2,8 +2,8 @@
 # file: configure_project_version.cmake
 # author: Kumarjit Das (kumarjitdas1999@gmail.com)
 # brief: Configure the project version.
-# version: 0.6.0
-# date: 2021-12-01
+# version: 0.7.0
+# date: 2021-12-10
 #
 # License(MIT License):
 #

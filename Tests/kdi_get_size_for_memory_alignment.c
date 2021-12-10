@@ -2,8 +2,8 @@
  * @file kdi_get_size_for_memory_alignment.c
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
  * @brief Tests for `kdi_get_size_for_memory_alignment` function.
- * @version 0.6.0
- * @date 2021-12-08
+ * @version 0.7.0
+ * @date 2021-12-10
  *
  * @copyright Copyright (c) 2021
  *

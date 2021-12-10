@@ -2,8 +2,8 @@
  * @file align_memory.h
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
  * @brief Contains all `Align-Memory` library function declarations.
- * @version 0.6.0
- * @date 2021-12-08
+ * @version 0.7.0
+ * @date 2021-12-10
  *
  * @copyright Copyright (c) 2021
  *
