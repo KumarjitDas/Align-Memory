@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
 
-    printf("\n Align-Memory library example:\n\n");
+    printf("\n Align-Memory library example 1:\n\n");
 
     uint64_t u64Usable_length = strtoull(argv[1], NULL, 10);
     uint64_t u64Usable_size = u64Usable_length * sizeof(int32_t);
