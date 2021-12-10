@@ -5,10 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.1/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 
-## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v0.7.0...HEAD)
+## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v0.8.0...HEAD)
 
 - *CPack* packagitg support
 - *vcpkg* packagitg support
+
+## [0.8.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.7.0...v0.8.0) - 2021-12-10
+
+### Added
+
+- `KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT` architecture macro in public header and all source files
+- `NOTEs` for the users of this library in the function documentations
+- `kdi_get_aligned_memory_forward` public API function
+  [declaration/prototype](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Sources/src/align_memory/align_memory.c)
+  and [definition](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Sources/include/align_memory/align_memory.h)
+- Tests for `kdi_get_aligned_memory_forward` function in
+  [kdi_get_aligned_memory_forward.c](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Tests/kdi_get_aligned_memory_forward.c)
+
+### Changed
+
+- Generic variable names with appropriate 64 bit names in all source files
+
+### Removed
+
+- Unnecessary type casting in sources.
+- `show_usage` function from
+  [example-001.c](https://github.com/KumarjitDas/Align-Memory/blob/v0.8.0/Examples/example-001.c) file
+- Implementation of memory alignment in `kdi_align_memory` function, using `kdi_get_aligned_memory_forward` api
+  function instead
 
 ## [0.7.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.6.0...v0.7.0) - 2021-12-10
 

@@ -2,7 +2,7 @@
 # file: include_tests.cmake
 # author: Kumarjit Das (kumarjitdas1999@gmail.com)
 # brief: Enables testing and includes the 'tests' directory.
-# version: 0.7.0
+# version: 0.8.0
 # date: 2021-12-10
 #
 # License(MIT License):

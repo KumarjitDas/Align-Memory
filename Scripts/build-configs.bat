@@ -3,7 +3,7 @@
 @REM @author Kumarjit Das (kumarjitdas1999@gmail.com)
 @REM @brief A batch script to build this project in all possible
 @REM        configurations using CMake.
-@REM @version 0.7.0
+@REM @version 0.8.0
 @REM @date 2021-12-10
 @REM
 @REM @copyright Copyright (c) 2021
