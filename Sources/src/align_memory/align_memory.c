@@ -1,7 +1,7 @@
 /**
  * @file align_memory.c
  * @author Kumarjit Das (kumarjitdas1999@gmail.com)
- * @brief Definitions of all the library functions.
+ * @brief Contains definitions of all the library functions(public).
  * @version 0.7.0
  * @date 2021-12-10
  *
@@ -33,31 +33,36 @@
 #include "align_memory/align_memory.h"
 #include "utility.h"
 
-uint64_t kdi_get_size_for_memory_alignment(uint64_t uiUsable_size,
-                                           uint64_t uiAlignment_size) {
+// #undef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
+#ifdef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
+uint64_t kdi_get_size_for_memory_alignment(uint64_t u64Usable_size,
+                                           uint64_t u64Alignment_size) {
     return _KDI_ALIGN_MEMORY_OFFSET_SIZE +
-           uiAlignment_size - 1 +
-           uiUsable_size;
+           u64Alignment_size - 1 +
+           u64Usable_size;
 }
 
 void *kdi_align_memory(void *pMemory,
-                       uint64_t uiAlignment_size) {
-    --uiAlignment_size;
-    uintmax_t umOffset_size = _KDI_ALIGN_MEMORY_OFFSET_SIZE +
-                              uiAlignment_size;
-    void *pOffset_memory = (void *)((uintmax_t)pMemory + umOffset_size);
-    void *pAligned_memory = (void *)((uintmax_t)pOffset_memory &
-                                     ~(uintmax_t)uiAlignment_size);
-    _kdi_offset_t *pOffset_size_memory = (_kdi_offset_t *)pAligned_memory -
-                                         1;
-    *pOffset_size_memory = (_kdi_offset_t)((uintmax_t)pAligned_memory -
-                                           (uintmax_t)pMemory);
+                       uint64_t u64Alignment_size) {
+    --u64Alignment_size;
+    uint64_t u64Offset_size = _KDI_ALIGN_MEMORY_OFFSET_SIZE +
+                              u64Alignment_size;
+    void *pOffset_memory = (void *)((uint64_t)pMemory + u64Offset_size);
+    void *pAligned_memory = (void *)((uint64_t)pOffset_memory &
+                                     ~u64Alignment_size);
+    _kdi_offset_t *pOffset_size_memory = (_kdi_offset_t *)pAligned_memory - 1;
+    *pOffset_size_memory = (_kdi_offset_t)((uint64_t)pAligned_memory -
+                                           (uint64_t)pMemory);
     return pAligned_memory;
 }
 
 void *kdi_get_actual_memory_from_aligned_memory(void *pMemory) {
     _kdi_offset_t *pOffset_size_memory = (_kdi_offset_t *)pMemory - 1;
-    uintmax_t umOffset_size = (uintmax_t)*pOffset_size_memory;
-
-    return (uint8_t *)pMemory - umOffset_size;
+    uint64_t u64Offset_size = (uint64_t)*pOffset_size_memory;
+    return (uint8_t *)pMemory - u64Offset_size;
 }
+
+#else  /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT not defined */
+#endif /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT */

@@ -37,105 +37,128 @@
 #include <stdint.h>
 #include <assert.h>
 
+// #undef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
+#ifdef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
 int main() {
-    uint32_t uiUsable_size, uiAlignment_size, uiAllocation_size;
-    uint32_t *pMemory, *pMemory_aligned;
+    uint64_t u64Usable_size, u64Alignment_size, u64Allocation_size;
+    uint32_t *p32Memory, *p32Memory_aligned;
 
     // Test 1
-    uiUsable_size = 10 * sizeof(*pMemory);
-    uiAlignment_size = 1;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    pMemory = malloc(uiAllocation_size);
-    if (pMemory == NULL) return EXIT_FAILURE;
-    pMemory_aligned = kdi_align_memory(pMemory,
-                                                           uiAlignment_size);
-    assert(((uintmax_t)pMemory_aligned % uiAlignment_size) == 0);
-    free(pMemory);
+    u64Usable_size = 10 * sizeof(*p32Memory);
+    u64Alignment_size = 1;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    p32Memory = malloc(u64Allocation_size);
+    if (p32Memory == NULL) {
+        return EXIT_FAILURE;
+    }
+    p32Memory_aligned = kdi_align_memory(p32Memory,
+                                         u64Alignment_size);
+    assert(((uint64_t)p32Memory_aligned % u64Alignment_size) == 0);
+    free(p32Memory);
 
     // Test 2
-    uiUsable_size = 10 * sizeof(*pMemory);
-    uiAlignment_size = 2;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    pMemory = malloc(uiAllocation_size);
-    if (pMemory == NULL) return EXIT_FAILURE;
-    pMemory_aligned = kdi_align_memory(pMemory,
-                                                           uiAlignment_size);
-    assert(((uintmax_t)pMemory_aligned % uiAlignment_size) == 0);
-    free(pMemory);
+    u64Usable_size = 10 * sizeof(*p32Memory);
+    u64Alignment_size = 2;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    p32Memory = malloc(u64Allocation_size);
+    if (p32Memory == NULL) {
+        return EXIT_FAILURE;
+    }
+    p32Memory_aligned = kdi_align_memory(p32Memory,
+                                         u64Alignment_size);
+    assert(((uint64_t)p32Memory_aligned % u64Alignment_size) == 0);
+    free(p32Memory);
 
     // Test 3
-    uiUsable_size = 10 * sizeof(*pMemory);
-    uiAlignment_size = 4;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    pMemory = malloc(uiAllocation_size);
-    if (pMemory == NULL) return EXIT_FAILURE;
-    pMemory_aligned = kdi_align_memory(pMemory,
-                                                           uiAlignment_size);
-    assert(((uintmax_t)pMemory_aligned % uiAlignment_size) == 0);
-    free(pMemory);
+    u64Usable_size = 10 * sizeof(*p32Memory);
+    u64Alignment_size = 4;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    p32Memory = malloc(u64Allocation_size);
+    if (p32Memory == NULL) {
+        return EXIT_FAILURE;
+    }
+    p32Memory_aligned = kdi_align_memory(p32Memory,
+                                         u64Alignment_size);
+    assert(((uint64_t)p32Memory_aligned % u64Alignment_size) == 0);
+    free(p32Memory);
 
     // Test 4
-    uiUsable_size = 10 * sizeof(*pMemory);
-    uiAlignment_size = 8;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    pMemory = malloc(uiAllocation_size);
-    if (pMemory == NULL) return EXIT_FAILURE;
-    pMemory_aligned = kdi_align_memory(pMemory,
-                                                           uiAlignment_size);
-    assert(((uintmax_t)pMemory_aligned % uiAlignment_size) == 0);
-    free(pMemory);
+    u64Usable_size = 10 * sizeof(*p32Memory);
+    u64Alignment_size = 8;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    p32Memory = malloc(u64Allocation_size);
+    if (p32Memory == NULL) {
+        return EXIT_FAILURE;
+    }
+    p32Memory_aligned = kdi_align_memory(p32Memory,
+                                         u64Alignment_size);
+    assert(((uint64_t)p32Memory_aligned % u64Alignment_size) == 0);
+    free(p32Memory);
 
     // Test 5
-    uiUsable_size = 100 * sizeof(*pMemory);
-    uiAlignment_size = 16;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    pMemory = malloc(uiAllocation_size);
-    if (pMemory == NULL) return EXIT_FAILURE;
-    pMemory_aligned = kdi_align_memory(pMemory,
-                                                           uiAlignment_size);
-    assert(((uintmax_t)pMemory_aligned % uiAlignment_size) == 0);
-    free(pMemory);
+    u64Usable_size = 100 * sizeof(*p32Memory);
+    u64Alignment_size = 16;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    p32Memory = malloc(u64Allocation_size);
+    if (p32Memory == NULL) {
+        return EXIT_FAILURE;
+    }
+    p32Memory_aligned = kdi_align_memory(p32Memory,
+                                         u64Alignment_size);
+    assert(((uint64_t)p32Memory_aligned % u64Alignment_size) == 0);
+    free(p32Memory);
 
     // Test 6
-    uiUsable_size = 100 * sizeof(*pMemory);
-    uiAlignment_size = 32;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    pMemory = malloc(uiAllocation_size);
-    if (pMemory == NULL) return EXIT_FAILURE;
-    pMemory_aligned = kdi_align_memory(pMemory,
-                                                           uiAlignment_size);
-    assert(((uintmax_t)pMemory_aligned % uiAlignment_size) == 0);
-    free(pMemory);
+    u64Usable_size = 100 * sizeof(*p32Memory);
+    u64Alignment_size = 32;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    p32Memory = malloc(u64Allocation_size);
+    if (p32Memory == NULL) {
+        return EXIT_FAILURE;
+    }
+    p32Memory_aligned = kdi_align_memory(p32Memory,
+                                         u64Alignment_size);
+    assert(((uint64_t)p32Memory_aligned % u64Alignment_size) == 0);
+    free(p32Memory);
 
     // Test 7
-    uiUsable_size = 100 * sizeof(*pMemory);
-    uiAlignment_size = 64;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    pMemory = malloc(uiAllocation_size);
-    if (pMemory == NULL) return EXIT_FAILURE;
-    pMemory_aligned = kdi_align_memory(pMemory,
-                                                           uiAlignment_size);
-    assert(((uintmax_t)pMemory_aligned % uiAlignment_size) == 0);
-    free(pMemory);
+    u64Usable_size = 100 * sizeof(*p32Memory);
+    u64Alignment_size = 64;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    p32Memory = malloc(u64Allocation_size);
+    if (p32Memory == NULL) {
+        return EXIT_FAILURE;
+    }
+    p32Memory_aligned = kdi_align_memory(p32Memory,
+                                         u64Alignment_size);
+    assert(((uint64_t)p32Memory_aligned % u64Alignment_size) == 0);
+    free(p32Memory);
 
     // Test 8
-    uiUsable_size = 1000 * sizeof(*pMemory);
-    uiAlignment_size = 128;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    pMemory = malloc(uiAllocation_size);
-    if (pMemory == NULL) return EXIT_FAILURE;
-    pMemory_aligned = kdi_align_memory(pMemory,
-                                                           uiAlignment_size);
-    assert(((uintmax_t)pMemory_aligned % uiAlignment_size) == 0);
-    free(pMemory);
+    u64Usable_size = 1000 * sizeof(*p32Memory);
+    u64Alignment_size = 128;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    p32Memory = malloc(u64Allocation_size);
+    if (p32Memory == NULL) {
+        return EXIT_FAILURE;
+    }
+    p32Memory_aligned = kdi_align_memory(p32Memory,
+                                         u64Alignment_size);
+    assert(((uint64_t)p32Memory_aligned % u64Alignment_size) == 0);
+    free(p32Memory);
 
     return EXIT_SUCCESS;
 }
+
+#else  /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT not defined */
+#endif /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT */

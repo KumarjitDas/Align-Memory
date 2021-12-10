@@ -37,64 +37,71 @@
 #include <stdlib.h>
 #include <assert.h>
 
+// #undef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
+#ifdef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
 int main() {
-    uint32_t uiUsable_size, uiAlignment_size, uiAllocation_size;
+    uint64_t u64Usable_size, u64Alignment_size, u64Allocation_size;
 
     // Test 1
-    uiUsable_size = 10;
-    uiAlignment_size = 1;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    assert(uiAllocation_size == 11);
+    u64Usable_size = 10;
+    u64Alignment_size = 1;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    assert(u64Allocation_size == 11);
 
     // Test 2
-    uiUsable_size = 10;
-    uiAlignment_size = 2;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    assert(uiAllocation_size == 12);
+    u64Usable_size = 10;
+    u64Alignment_size = 2;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    assert(u64Allocation_size == 12);
 
     // Test 3
-    uiUsable_size = 10;
-    uiAlignment_size = 4;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    assert(uiAllocation_size == 14);
+    u64Usable_size = 10;
+    u64Alignment_size = 4;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    assert(u64Allocation_size == 14);
 
     // Test 4
-    uiUsable_size = 10;
-    uiAlignment_size = 8;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    assert(uiAllocation_size == 18);
+    u64Usable_size = 10;
+    u64Alignment_size = 8;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    assert(u64Allocation_size == 18);
 
     // Test 5
-    uiUsable_size = 100;
-    uiAlignment_size = 16;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    assert(uiAllocation_size == 116);
+    u64Usable_size = 100;
+    u64Alignment_size = 16;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    assert(u64Allocation_size == 116);
 
     // Test 6
-    uiUsable_size = 100;
-    uiAlignment_size = 32;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    assert(uiAllocation_size == 132);
+    u64Usable_size = 100;
+    u64Alignment_size = 32;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    assert(u64Allocation_size == 132);
 
     // Test 7
-    uiUsable_size = 100;
-    uiAlignment_size = 64;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    assert(uiAllocation_size == 164);
+    u64Usable_size = 100;
+    u64Alignment_size = 64;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    assert(u64Allocation_size == 164);
 
     // Test 8
-    uiUsable_size = 1000;
-    uiAlignment_size = 128;
-    uiAllocation_size = kdi_get_size_for_memory_alignment(uiUsable_size,
-                                                             uiAlignment_size);
-    assert(uiAllocation_size == 1128);
+    u64Usable_size = 1000;
+    u64Alignment_size = 128;
+    u64Allocation_size = kdi_get_size_for_memory_alignment(u64Usable_size,
+                                                           u64Alignment_size);
+    assert(u64Allocation_size == 1128);
 
     return EXIT_SUCCESS;
 }
+
+#else  /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT not defined */
+#endif /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT */
