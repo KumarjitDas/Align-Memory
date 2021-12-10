@@ -57,12 +57,8 @@ void *kdi_get_aligned_memory_forward(void *pMemory,
 
 void *kdi_align_memory(void *pMemory,
                        uint64_t u64Alignment_size) {
-    --u64Alignment_size;
-    uint64_t u64Offset_size = _KDI_ALIGN_MEMORY_OFFSET_SIZE +
-                              u64Alignment_size;
-    void *pOffset_memory = (void *)((uint64_t)pMemory + u64Offset_size);
-    void *pAligned_memory = (void *)((uint64_t)pOffset_memory &
-                                     ~u64Alignment_size);
+    void *pAligned_memory = kdi_get_aligned_memory_forward(pMemory,
+                                                           u64Alignment_size);
     _kdi_offset_t *pOffset_size_memory = (_kdi_offset_t *)pAligned_memory - 1;
     *pOffset_size_memory = (_kdi_offset_t)((uint64_t)pAligned_memory -
                                            (uint64_t)pMemory);
