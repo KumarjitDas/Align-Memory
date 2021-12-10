@@ -113,6 +113,10 @@ uint64_t KDI_ALIGN_MEMORY_API
 kdi_get_size_for_memory_alignment(uint64_t u64Usable_size,
                                   uint64_t u64Alignment_size);
 
+void KDI_ALIGN_MEMORY_API*
+kdi_get_aligned_memory_forward(void* pMemory,
+                               uint64_t u64Alignment_size);
+
 /**
  * @brief Returns the aligned memory location.
  *

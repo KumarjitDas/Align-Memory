@@ -44,6 +44,17 @@ uint64_t kdi_get_size_for_memory_alignment(uint64_t u64Usable_size,
            u64Usable_size;
 }
 
+void *kdi_get_aligned_memory_forward(void *pMemory,
+                                     uint64_t u64Alignment_size) {
+    --u64Alignment_size;
+    uint64_t u64Offset_size = _KDI_ALIGN_MEMORY_OFFSET_SIZE +
+                              u64Alignment_size;
+    void *pOffset_memory = (void *)((uint8_t *)pMemory + u64Offset_size);
+    void *pAligned_memory = (void *)((uint64_t)pOffset_memory &
+                                     ~u64Alignment_size);
+    return pAligned_memory;
+}
+
 void *kdi_align_memory(void *pMemory,
                        uint64_t u64Alignment_size) {
     --u64Alignment_size;
