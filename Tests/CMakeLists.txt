@@ -33,6 +33,7 @@ write_status("'Tests' subdirectory added.")
 # Set the list of test programs
 set(TEST_LIST "kdi_get_size_for_memory_alignment"
               "kdi_get_aligned_memory_forward"
+              "kdi_get_aligned_memory_backward"
               "kdi_align_memory"
               "kdi_get_actual_memory_from_aligned_memory")
 
