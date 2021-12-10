@@ -55,6 +55,16 @@ void *kdi_get_aligned_memory_forward(void *pMemory,
     return pAligned_memory;
 }
 
+void *kdi_get_aligned_memory_backward(void *pMemory,
+                                      uint64_t u64Alignment_size) {
+    void *pAligned_memory = kdi_get_aligned_memory_forward(pMemory,
+                                                           u64Alignment_size);
+    if (pAligned_memory != pMemory) {
+        pAligned_memory = (uint8_t *)pAligned_memory - u64Alignment_size;
+    }
+    return pAligned_memory;
+}
+
 void *kdi_align_memory(void *pMemory,
                        uint64_t u64Alignment_size) {
     void *pAligned_memory = kdi_get_aligned_memory_forward(pMemory,

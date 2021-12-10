@@ -117,6 +117,10 @@ void KDI_ALIGN_MEMORY_API*
 kdi_get_aligned_memory_forward(void* pMemory,
                                uint64_t u64Alignment_size);
 
+void KDI_ALIGN_MEMORY_API*
+kdi_get_aligned_memory_backward(void* pMemory,
+                                uint64_t u64Alignment_size);
+
 /**
  * @brief Returns the aligned memory location.
  *
