@@ -36,54 +36,58 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-void show_usage(void) {
-    printf(
-        "Usage: example-001 length align\n"
-        "    length - a positive integer\n"
-        "    align  - a positive integer between 1 and 128(including) and\n"
-        "             it should be a power of 2\n");
-}
+// #undef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
+
+#ifdef KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT
 
 int main(int argc, char **argv) {
     if (argc < 3) {
-        show_usage();
+        printf(
+            "Usage: example-001 length align\n"
+            "    length - a positive integer\n"
+            "    align  - a positive integer between 1 and 128(including) "
+            "and\n"
+            "             it should be a power of 2\n");
         return EXIT_FAILURE;
     }
 
     printf("\n Align-Memory library example:\n\n");
 
-    uint32_t uiUsable_length = (uint32_t)strtol(argv[1], NULL, 10);
-    uint32_t uiUsable_size = uiUsable_length * sizeof(int32_t);
-    uint32_t uiAlignment_size = (uint32_t)strtol(argv[2], NULL, 10);
-    uint32_t uiAllocation_size = kdi_get_size_for_memory_alignment(
-        uiUsable_size,
-        uiAlignment_size);
-    int32_t *pArray = malloc(uiAllocation_size);
-    if (pArray == NULL) {
+    uint64_t u64Usable_length = strtoull(argv[1], NULL, 10);
+    uint64_t u64Usable_size = u64Usable_length * sizeof(int32_t);
+    uint64_t u64Alignment_size = strtoull(argv[2], NULL, 10);
+    uint64_t u64Allocation_size = kdi_get_size_for_memory_alignment(
+        u64Usable_size,
+        u64Alignment_size);
+    int32_t *p32Array = malloc(u64Allocation_size);
+    if (p32Array == NULL) {
         fprintf(stderr, "ERROR: Could not allocate memory!\n");
         return EXIT_FAILURE;
     }
-    int32_t *pAligned_array = kdi_align_memory(pArray,
-                                               uiAlignment_size);
-    int32_t *pActual_array = kdi_get_actual_memory_from_aligned_memory(
-        pAligned_array);
+    int32_t *p32Aligned_array = kdi_align_memory(p32Array,
+                                                 u64Alignment_size);
+    int32_t *p32Actual_array = kdi_get_actual_memory_from_aligned_memory(
+        p32Aligned_array);
 
     printf(
-        " Usable length:         %u\n"
-        " Usable size:           %u\n"
-        " Alignment size:        %u\n"
-        " Allocation size:       %u\n"
-        " Array address:         0x%X\n"
-        " Aligned array address: 0x%X\n"
-        " Actual array address:  0x%X\n",
-        uiUsable_length,
-        uiUsable_size,
-        uiAlignment_size,
-        uiAllocation_size,
-        (uint32_t)(uintptr_t)pArray,
-        (uint32_t)(uintptr_t)pAligned_array,
-        (uint32_t)(uintptr_t)pActual_array);
+        " Usable length:         %llu\n"
+        " Usable size:           %llu\n"
+        " Alignment size:        %llu\n"
+        " Allocation size:       %llu\n"
+        " Array address:         [%p]\n"
+        " Aligned array address: [%p]\n"
+        " Actual array address:  [%p]\n",
+        u64Usable_length,
+        u64Usable_size,
+        u64Alignment_size,
+        u64Allocation_size,
+        p32Array,
+        p32Aligned_array,
+        p32Actual_array);
 
-    free(pArray);
+    free(p32Array);
     return EXIT_SUCCESS;
 }
+
+#else  /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT not defined */
+#endif /* KDI_ALIGN_MEMORY_ARCHITECTURE_64_BIT */
