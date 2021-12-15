@@ -80,5 +80,7 @@ if(${BUILD_SHARED_LIBS})
     set(KDI_BUILD_LIBRARY_TYPE "Shared")
 else()
     set(KDI_BUILD_LIBRARY_TYPE "Static")
+    # Add `-s` as postfix to the build output
+    set(KDI_STATIC_POSTFIX "-s")
 endif()
 string(TOLOWER ${KDI_BUILD_LIBRARY_TYPE} KDI_BUILD_LIBRARY_TYPE_LOWER)
