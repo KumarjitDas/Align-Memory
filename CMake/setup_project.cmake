@@ -64,6 +64,17 @@ write_status("CMAKE_EXPORT_COMPILE_COMMANDS is set to: "
 # Setting the `BUILD_SHARED_LIBS` variable as an option
 option(BUILD_SHARED_LIBS "Build this project as a shared library." ON)
 write_status("BUILD_SHARED_LIBS is set to: ${BUILD_SHARED_LIBS}")
+# Setting the static and dynamic library directory to lib and executable
+# directory to bin
+set(KDI_LIBRARY_OUTPUT_DIR "${CMAKE_BINARY_DIR}/lib")
+set(KDI_RUNTIME_OUTPUT_DIR "${CMAKE_BINARY_DIR}/bin")
+get_property(KDI_IS_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+if(NOT ${KDI_IS_MULTI_CONFIG})
+    set(KDI_LIBRARY_OUTPUT_DIR
+        "${KDI_LIBRARY_OUTPUT_DIR}/${CMAKE_BUILD_TYPE}")
+    set(KDI_RUNTIME_OUTPUT_DIR
+        "${KDI_RUNTIME_OUTPUT_DIR}/${CMAKE_BUILD_TYPE}")
+endif()
 # Setting the build library type name
 if(${BUILD_SHARED_LIBS})
     set(KDI_BUILD_LIBRARY_TYPE "Shared")
