@@ -37,35 +37,52 @@ set(TEST_LIST "kdi_get_size_for_memory_alignment"
               "kdi_align_memory"
               "kdi_get_actual_memory_from_aligned_memory")
 
+# Setting the tests output and working directories
+set(_KDI_TESTS_LIBRARY_OUTPUT_DIR "${CMAKE_BINARY_DIR}/Tests")
+set(_KDI_TESTS_RUNTIME_OUTPUT_DIR ${_KDI_TESTS_LIBRARY_OUTPUT_DIR})
+set(_KDI_TESTS_WORKING_DIRECTORY  ${_KDI_TESTS_LIBRARY_OUTPUT_DIR})
+if(NOT ${KDI_IS_MULTI_CONFIG})
+    set(_KDI_TESTS_LIBRARY_OUTPUT_DIR
+        "${_KDI_TESTS_LIBRARY_OUTPUT_DIR}/${CMAKE_BUILD_TYPE}")
+    set(_KDI_TESTS_RUNTIME_OUTPUT_DIR
+        "${_KDI_TESTS_RUNTIME_OUTPUT_DIR}/${CMAKE_BUILD_TYPE}")
+    set(_KDI_TESTS_WORKING_DIRECTORY
+        "${_KDI_TESTS_WORKING_DIRECTORY}/${CMAKE_BUILD_TYPE}")
+endif()
+if(${BUILD_SHARED_LIBS})
+    set(_KDI_TESTS_LIBRARY_OUTPUT_DIR ${KDI_LIBRARY_OUTPUT_DIR})
+    set(_KDI_TESTS_RUNTIME_OUTPUT_DIR ${KDI_RUNTIME_OUTPUT_DIR})
+    set(_KDI_TESTS_WORKING_DIRECTORY  ${KDI_RUNTIME_OUTPUT_DIR})
+endif()
 # Loop through each item in the tests list
 foreach(TEST_ITEM ${TEST_LIST})
-    # Build an executable from the `TEST_ITEM` source
-    add_executable("${TEST_ITEM}" "${TEST_ITEM}.c")
+    # Setting the current test target name
+    set(TEST_TARGET "test-${TEST_ITEM}")
+    # Build an executable from the `TEST_TARGET` source
+    add_executable(${TEST_TARGET} "${TEST_ITEM}.c")
     # Link the built executable with the main library
-    target_link_libraries("${TEST_ITEM}" PRIVATE "KDI::align_memory")
-
-    # Set the test name for `TEST_ITEM`
-    set(TEST_NAME "Test_${TEST_ITEM}")
-
-    # Check if the project builds shared libraries
-    if(BUILD_SHARED_LIBS)
-        # If the project builds shared libraries then set the static and shared
-        # library directory to lib and executables directory to bin
-        set_target_properties(
-            "${TEST_ITEM}" PROPERTIES
-            ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-            LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-            RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
-        )
-        # Adding test for this executable when building shared library
-        add_test(NAME              "${TEST_NAME}"
-                 COMMAND           "${TEST_ITEM}"
-                 WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-    else()
-        # Adding test for this executable when building static library
-        add_test(NAME              "${TEST_NAME}"
-                 COMMAND           "${TEST_ITEM}"
-                 WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/Tests")
-    endif()
+    target_link_libraries(${TEST_TARGET} PRIVATE "KDI::${KDI_LIBRARY_NAME}")
+    # Setting build postfixes for different build configurations
+    set_target_properties(
+        ${TEST_TARGET}         PROPERTIES
+        DEBUG_POSTFIX          "${KDI_STATIC_POSTFIX}-d"
+        RELEASE_POSTFIX        "${KDI_STATIC_POSTFIX}"
+        MINSIZEREL_POSTFIX     "${KDI_STATIC_POSTFIX}-mr"
+        RELWITHDEBINFO_POSTFIX "${KDI_STATIC_POSTFIX}-rd"
+    )
+    # Setting the test name for `TEST_TARGET`
+    set(TEST_NAME "Test_${TEST_TARGET}")
+    # If the project builds shared libraries then set the static and shared
+    # library directory to lib and executables directory to bin
+    set_target_properties(
+        ${TEST_TARGET}           PROPERTIES
+        ARCHIVE_OUTPUT_DIRECTORY ${_KDI_TESTS_LIBRARY_OUTPUT_DIR}
+        LIBRARY_OUTPUT_DIRECTORY ${_KDI_TESTS_LIBRARY_OUTPUT_DIR}
+        RUNTIME_OUTPUT_DIRECTORY ${_KDI_TESTS_RUNTIME_OUTPUT_DIR}
+    )
+    # Adding test for this executable when building static library
+    add_test(NAME              ${TEST_NAME}
+             COMMAND           ${TEST_TARGET}
+             WORKING_DIRECTORY ${_KDI_TESTS_WORKING_DIRECTORY})
     write_status("Adding test: ${TEST_NAME}")
 endforeach()

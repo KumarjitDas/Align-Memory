@@ -34,23 +34,40 @@ write_status("'Examples' subdirectory added.")
 set(EXAMPLE_LIST "example-001"
                  "example-002")
 
+# Setting the examples output directories
+set(_KDI_EXAMPLES_LIBRARY_OUTPUT_DIR "${CMAKE_BINARY_DIR}/Examples")
+set(_KDI_EXAMPLES_RUNTIME_OUTPUT_DIR ${_KDI_EXAMPLES_LIBRARY_OUTPUT_DIR})
+if(NOT ${KDI_IS_MULTI_CONFIG})
+    set(_KDI_EXAMPLES_LIBRARY_OUTPUT_DIR
+        "${_KDI_EXAMPLES_LIBRARY_OUTPUT_DIR}/${CMAKE_BUILD_TYPE}")
+    set(_KDI_EXAMPLES_RUNTIME_OUTPUT_DIR
+        "${_KDI_EXAMPLES_RUNTIME_OUTPUT_DIR}/${CMAKE_BUILD_TYPE}")
+endif()
+if(${BUILD_SHARED_LIBS})
+    set(_KDI_EXAMPLES_LIBRARY_OUTPUT_DIR ${KDI_LIBRARY_OUTPUT_DIR})
+    set(_KDI_EXAMPLES_RUNTIME_OUTPUT_DIR ${KDI_RUNTIME_OUTPUT_DIR})
+endif()
 # Loop through each item in the examples list
 foreach(EXAMPLE_ITEM ${EXAMPLE_LIST})
     # Build an executable from the `EXAMPLE_ITEM` source
     add_executable(${EXAMPLE_ITEM} "${EXAMPLE_ITEM}.c")
     # Link the built executable with the main library
-    target_link_libraries(${EXAMPLE_ITEM} PRIVATE "KDI::align_memory")
-
-    # Check if the project builds shared libraries
-    if(BUILD_SHARED_LIBS)
-        # If the project builds shared libraries then set the static and shared
-        # library directory to lib and executables directory to bin
-        set_target_properties(
-            ${EXAMPLE_ITEM} PROPERTIES
-            ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-            LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-            RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
-        )
-    endif()
+    target_link_libraries(${EXAMPLE_ITEM} PRIVATE "KDI::${KDI_LIBRARY_NAME}")
+    # Setting build postfixes for different build configurations
+    set_target_properties(
+        ${EXAMPLE_ITEM}        PROPERTIES
+        DEBUG_POSTFIX          "${KDI_STATIC_POSTFIX}-d"
+        RELEASE_POSTFIX        "${KDI_STATIC_POSTFIX}"
+        MINSIZEREL_POSTFIX     "${KDI_STATIC_POSTFIX}-mr"
+        RELWITHDEBINFO_POSTFIX "${KDI_STATIC_POSTFIX}-rd"
+    )
+    # If the project builds shared libraries then set the static and shared
+    # library directory to lib and executables directory to bin
+    set_target_properties(
+        ${EXAMPLE_ITEM} PROPERTIES
+        ARCHIVE_OUTPUT_DIRECTORY ${_KDI_EXAMPLES_LIBRARY_OUTPUT_DIR}
+        LIBRARY_OUTPUT_DIRECTORY ${_KDI_EXAMPLES_LIBRARY_OUTPUT_DIR}
+        RUNTIME_OUTPUT_DIRECTORY ${_KDI_EXAMPLES_RUNTIME_OUTPUT_DIR}
+    )
     write_status("Adding example: ${EXAMPLE_ITEM}")
 endforeach()
