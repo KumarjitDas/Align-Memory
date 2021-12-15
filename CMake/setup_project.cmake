@@ -75,6 +75,17 @@ if(NOT ${KDI_IS_MULTI_CONFIG})
     set(KDI_RUNTIME_OUTPUT_DIR
         "${KDI_RUNTIME_OUTPUT_DIR}/${CMAKE_BUILD_TYPE}")
 endif()
+# Setting the current user directory
+if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
+    set(KDI_CURRENT_USER_PATH "C:/Users/$ENV{USERNAME}")
+else()
+    set(KDI_CURRENT_USER_PATH "/$ENV{USER}")
+endif ()
+write_status("Current user path: ${KDI_CURRENT_USER_PATH}")
+# Getting the build directory name from current binary directory
+string(REPLACE "${CMAKE_SOURCE_DIR}/"
+        "" KDI_BUILD_DIRECTORY
+        ${CMAKE_CURRENT_BINARY_DIR})
 # Setting the build library type name
 if(${BUILD_SHARED_LIBS})
     set(KDI_BUILD_LIBRARY_TYPE "Shared")
@@ -84,3 +95,12 @@ else()
     set(KDI_STATIC_POSTFIX "-s")
 endif()
 string(TOLOWER ${KDI_BUILD_LIBRARY_TYPE} KDI_BUILD_LIBRARY_TYPE_LOWER)
+# Setting the build directory name
+string(FIND
+    ${KDI_BUILD_DIRECTORY}
+    ${KDI_BUILD_LIBRARY_TYPE}
+    _KDI_BUILD_LIBRARY_TYPE_EXISTS
+)
+if(${_KDI_BUILD_LIBRARY_TYPE_EXISTS} EQUAL -1)
+    set(KDI_BUILD_DIRECTORY "${KDI_BUILD_DIRECTORY}-${KDI_BUILD_LIBRARY_TYPE}")
+endif()
