@@ -7,8 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.1/),
 
 ## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v0.9.0...HEAD)
 
-- *CPack* packagitg support
-- *vcpkg* packagitg support
+- Using underscore and KDI namespace for local variable names
+- Added `KDI_BUILD_LIBRARY_TYPE` and `KDI_BUILD_LIBRARY_TYPE_LOWER` variables
+- Added build types validator for **Ninja Multi-Config**
+- Added more variables: `KDI_LIBRARY_OUTPUT_DIR`, `KDI_RUNTIME_OUTPUT_DIR`, `KDI_CURRENT_USER_PATH`, and
+  `KDI_BUILD_DIRECTORY`
+- Changed `STATIC_POSTFIX` to `KDI_STATIC_POSTFIX`
+- Added build postfixes to
+  [Examples](https://github.com/KumarjitDas/Align-Memory/blob/main/Examples/CMakeLists.txt) and
+  [Tests](https://github.com/KumarjitDas/Align-Memory/blob/main/Tests/CMakeLists.txt) output names.
 
 ## [0.9.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.8.0...v0.9.0) - 2021-12-10
 
