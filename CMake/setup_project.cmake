@@ -55,7 +55,6 @@ function(write_status)
     message(STATUS "[${KDI_PROJECT_NAME}] ${STATUS_VARIABLE}")
 endfunction()
 
-set(KDI_STATUS_VARIABLE "[${KDI_PROJECT_NAME}]")
 write_status("Initiating the project setup.")
 
 # Generate compile commands for IDE's
@@ -64,5 +63,11 @@ write_status("CMAKE_EXPORT_COMPILE_COMMANDS is set to: "
              ${CMAKE_EXPORT_COMPILE_COMMANDS})
 # Setting the `BUILD_SHARED_LIBS` variable as an option
 option(BUILD_SHARED_LIBS "Build this project as a shared library." ON)
-write_status("BUILD_SHARED_LIBS is set to: "
-             ${BUILD_SHARED_LIBS})
+write_status("BUILD_SHARED_LIBS is set to: ${BUILD_SHARED_LIBS}")
+# Setting the build library type name
+if(${BUILD_SHARED_LIBS})
+    set(KDI_BUILD_LIBRARY_TYPE "Shared")
+else()
+    set(KDI_BUILD_LIBRARY_TYPE "Static")
+endif()
+string(TOLOWER ${KDI_BUILD_LIBRARY_TYPE} KDI_BUILD_LIBRARY_TYPE_LOWER)

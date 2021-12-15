@@ -32,12 +32,8 @@
 include("CMakePackageConfigHelpers")
 
 # Configuring the `Config` file for packaging this library
-set(CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/Configuration")
-if(BUILD_SHARED_LIBS)
-    set(CONFIG_FILE "${CONFIG_FILE}/config-shared.cmake.in")
-else()
-    set(CONFIG_FILE "${CONFIG_FILE}/config-static.cmake.in")
-endif()
+set(_KDI_CONFIG_FILE
+    "${CMAKE_CURRENT_SOURCE_DIR}/Configuration/config-${KDI_BUILD_LIBRARY_TYPE_LOWER}.cmake.in")
 configure_package_config_file(
     ${_KDI_CONFIG_FILE}
     "${CMAKE_CURRENT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-config.cmake"
