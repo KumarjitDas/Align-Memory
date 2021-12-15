@@ -39,7 +39,7 @@ else()
     set(CONFIG_FILE "${CONFIG_FILE}/config-static.cmake.in")
 endif()
 configure_package_config_file(
-    ${CONFIG_FILE}
+    ${_KDI_CONFIG_FILE}
     "${CMAKE_CURRENT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-config.cmake"
     INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/${KDI_INSTALL_CMAKE_DIR}"
     PATH_VARS KDI_INSTALL_LIB_DIR KDI_INSTALL_BIN_DIR KDI_INSTALL_INCLUDE_DIR
@@ -50,7 +50,7 @@ write_basic_package_version_file(
     VERSION ${${KDI_LIBRARY_NAME_UPPER}_VERSION}
     COMPATIBILITY AnyNewerVersion
 )
-write_status("Configuring package config file from: ${CONFIG_FILE}")
+write_status("Configuring package config file from: ${_KDI_CONFIG_FILE}")
 
 # Setting the install location for the generated config files
 install(

@@ -32,7 +32,7 @@
 include("GenerateExportHeader")
 
 # Setting the static define variable
-set(MY_STATIC_DEFINE "${KDI_LIBRARY_NAME_UPPER}_API_STATIC_DEFINE")
+set(_KDI_STATIC_DEFINE "${KDI_LIBRARY_NAME_UPPER}_API_STATIC_DEFINE")
 
 # Generating the export header for the main target
 generate_export_header(
@@ -43,17 +43,17 @@ generate_export_header(
     DEPRECATED_MACRO_NAME    "${KDI_LIBRARY_NAME_UPPER}_API_DEPRECATED"
     NO_EXPORT_MACRO_NAME     "${KDI_LIBRARY_NAME_UPPER}_API_NO_EXPORT"
     INCLUDE_GUARD_NAME       "_KDI_${KDI_LIBRARY_NAME_UPPER}_API_H_"
-    STATIC_DEFINE            ${MY_STATIC_DEFINE}
+    STATIC_DEFINE            ${_KDI_STATIC_DEFINE}
     NO_DEPRECATED_MACRO_NAME "${KDI_LIBRARY_NAME_UPPER}_API_NOT_DEPRECATED"
     DEFINE_NO_DEPRECATED
 )
 write_status("Generating export header: ${KDI_LIBRARY_NAME}_api.h")
 
 # Undefining `dll export` and `dll inport` when building static library
-if(NOT BUILD_SHARED_LIBS)
+if(NOT ${BUILD_SHARED_LIBS})
     set_target_properties(
         ${KDI_LIBRARY_NAME} PROPERTIES
-        COMPILE_FLAGS "-D${MY_STATIC_DEFINE}"
+        COMPILE_FLAGS "-D${_KDI_STATIC_DEFINE}"
     )
 endif()
 

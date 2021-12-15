@@ -32,11 +32,9 @@
 set(KDI_PROJECT_NAME "Align-Memory")
 string(TOLOWER ${KDI_PROJECT_NAME} KDI_PROJECT_NAME_LOWER)
 string(TOUPPER ${KDI_PROJECT_NAME} KDI_PROJECT_NAME_UPPER)
-
 # Setting the main library name in both lower and upper-cases
 set(KDI_LIBRARY_NAME "align_memory")
 string(TOUPPER ${KDI_LIBRARY_NAME} KDI_LIBRARY_NAME_UPPER)
-
 # Setting project version
 set(${KDI_LIBRARY_NAME_UPPER}_VERSION_MAJOR 0)
 set(${KDI_LIBRARY_NAME_UPPER}_VERSION_MINOR 5)
@@ -45,16 +43,14 @@ string(CONCAT ${KDI_LIBRARY_NAME_UPPER}_VERSION
        "${${KDI_LIBRARY_NAME_UPPER}_VERSION_MAJOR}."
        "${${KDI_LIBRARY_NAME_UPPER}_VERSION_MINOR}."
        "${${KDI_LIBRARY_NAME_UPPER}_VERSION_PATCH}")
-
 # Setting project description
 string(CONCAT ${KDI_PROJECT_NAME_UPPER}_DESCRIPTION
        "A simple C library for easy memory alignment.")
-
 # Creating the write_status function
 function(write_status)
     set(STATUS_VARIABLE "")
-    foreach(argument ${ARGV})
-        set(STATUS_VARIABLE "${STATUS_VARIABLE}${argument}")
+    foreach(_ARGUMENT ${ARGV})
+        set(STATUS_VARIABLE "${STATUS_VARIABLE}${_ARGUMENT}")
     endforeach()
     message(STATUS "[${KDI_PROJECT_NAME}] ${STATUS_VARIABLE}")
 endfunction()
@@ -66,7 +62,6 @@ write_status("Initiating the project setup.")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 write_status("CMAKE_EXPORT_COMPILE_COMMANDS is set to: "
              ${CMAKE_EXPORT_COMPILE_COMMANDS})
-
 # Setting the `BUILD_SHARED_LIBS` variable as an option
 option(BUILD_SHARED_LIBS "Build this project as a shared library." ON)
 write_status("BUILD_SHARED_LIBS is set to: "
