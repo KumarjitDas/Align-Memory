@@ -30,7 +30,11 @@
 
 write_status("Validating build configuration.")
 
-set(VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
+if("${CMAKE_GENERATOR}" STREQUAL "Ninja Multi-Config")
+    set(VALID_BUILD_TYPES "Release" "Debug" "RelWithDebInfo")
+else()
+    set(VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
+endif()
 # Validate build configuration
 if(NOT CMAKE_CONFIGURATION_TYPES)
     # Setting the default build type to release
