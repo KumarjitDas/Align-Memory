@@ -5,17 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.1/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.1.html).
 
-## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v0.9.0...HEAD)
+## [Unreleased](https://github.com/KumarjitDas/Align-Memory/compare/v1.0.0...HEAD)
+
+## [1.0.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.9.0...v1.0.0) - 2022-01-17
+
+### Added
+
+- `KDI_BUILD_LIBRARY_TYPE` and `KDI_BUILD_LIBRARY_TYPE_LOWER` variables
+- build types validator for **Ninja Multi-Config**
+- more variables: `KDI_LIBRARY_OUTPUT_DIR`, `KDI_RUNTIME_OUTPUT_DIR`, `KDI_CURRENT_USER_PATH`, and
+  `KDI_BUILD_DIRECTORY`
+- build postfixes to [Examples](https://github.com/KumarjitDas/Align-Memory/blob/v0.9.0/Examples/CMakeLists.txt) and
+  [Tests](https://github.com/KumarjitDas/Align-Memory/blob/v0.9.0/Tests/CMakeLists.txt) output names.
+
+### Changed
 
 - Using underscore and KDI namespace for local variable names
-- Added `KDI_BUILD_LIBRARY_TYPE` and `KDI_BUILD_LIBRARY_TYPE_LOWER` variables
-- Added build types validator for **Ninja Multi-Config**
-- Added more variables: `KDI_LIBRARY_OUTPUT_DIR`, `KDI_RUNTIME_OUTPUT_DIR`, `KDI_CURRENT_USER_PATH`, and
-  `KDI_BUILD_DIRECTORY`
-- Changed `STATIC_POSTFIX` to `KDI_STATIC_POSTFIX`
-- Added build postfixes to
-  [Examples](https://github.com/KumarjitDas/Align-Memory/blob/main/Examples/CMakeLists.txt) and
-  [Tests](https://github.com/KumarjitDas/Align-Memory/blob/main/Tests/CMakeLists.txt) output names.
+- `STATIC_POSTFIX` to `KDI_STATIC_POSTFIX`
 
 ## [0.9.0](https://github.com/KumarjitDas/Align-Memory/compare/v0.8.0...v0.9.0) - 2021-12-10
 

@@ -28,32 +28,29 @@
 # DEALINGS IN THE SOFTWARE.
 #
 
+write_status("Configuring package-config file.")
+
 # For accessing the package configuration helper functions
 include("CMakePackageConfigHelpers")
-
+# Setting the config output files
+set(_KDI_CONFIG_OUT "${CMAKE_CURRENT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-config")
+set(_KDI_CONFIG_OUT_FILE "${_KDI_CONFIG_OUT}.cmake")
+set(_KDI_CONFIG_VERSION_OUT_FILE "${_KDI_CONFIG_OUT}-version.cmake")
+set(_KDI_CONFIG_INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/${KDI_INSTALL_CMAKE_DIR}")
 # Configuring the `Config` file for packaging this library
-set(_KDI_CONFIG_FILE
-    "${CMAKE_CURRENT_SOURCE_DIR}/Configuration/config-${KDI_BUILD_LIBRARY_TYPE_LOWER}.cmake.in")
 configure_package_config_file(
-    ${_KDI_CONFIG_FILE}
-    "${CMAKE_CURRENT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-config.cmake"
-    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/${KDI_INSTALL_CMAKE_DIR}"
-    PATH_VARS KDI_INSTALL_LIB_DIR KDI_INSTALL_BIN_DIR KDI_INSTALL_INCLUDE_DIR
-)
+    "${CMAKE_CURRENT_SOURCE_DIR}/Configuration/config-${KDI_BUILD_LIBRARY_TYPE_LOWER}.cmake.in"
+    ${_KDI_CONFIG_OUT_FILE}
+    INSTALL_DESTINATION ${_KDI_CONFIG_INSTALL_DESTINATION}
+    PATH_VARS KDI_INSTALL_LIB_DIR KDI_INSTALL_BIN_DIR KDI_INSTALL_INCLUDE_DIR)
 # generate the version file for the config file
-write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-config-version.cmake"
-    VERSION ${${KDI_LIBRARY_NAME_UPPER}_VERSION}
-    COMPATIBILITY AnyNewerVersion
-)
-write_status("Configuring package config file from: ${_KDI_CONFIG_FILE}")
-
+write_basic_package_version_file(${_KDI_CONFIG_VERSION_OUT_FILE}
+                                 VERSION ${${KDI_LIBRARY_NAME_UPPER}_VERSION}
+                                 COMPATIBILITY AnyNewerVersion)
 # Setting the install location for the generated config files
-install(
-    FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-config.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-config-version.cmake"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/${KDI_INSTALL_CMAKE_DIR}"
-)
+install(FILES
+        ${_KDI_CONFIG_OUT_FILE}
+        ${_KDI_CONFIG_VERSION_OUT_FILE}
+        DESTINATION ${_KDI_CONFIG_INSTALL_DESTINATION})
 # Export the package for use from the build-tree
 export(PACKAGE ${KDI_PROJECT_NAME})

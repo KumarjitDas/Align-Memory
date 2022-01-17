@@ -28,29 +28,27 @@
 # DEALINGS IN THE SOFTWARE.
 #
 
-write_status("Generating ${KDI_PROJECT_NAME_LOWER}-targets.")
+# Setting the export target name
+set(_KDI_EXPORT_TARGET "${KDI_PROJECT_NAME_LOWER}-targets")
+
+write_status("Generating ${_KDI_EXPORT_TARGET}.")
 
 # Adding this to make cache variables for install destinations
 include("GNUInstallDirs")
-
 # Creating export target for the main library
 install(TARGETS              ${KDI_LIBRARY_NAME}
-        EXPORT               ${KDI_PROJECT_NAME_LOWER}-targets
+        EXPORT               ${_KDI_EXPORT_TARGET}
         LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR}
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
 # Setting the install location of the generated export target file
-install(EXPORT      ${KDI_PROJECT_NAME_LOWER}-targets
-        FILE        "${KDI_PROJECT_NAME_LOWER}-targets.cmake"
+install(EXPORT      ${_KDI_EXPORT_TARGET}
+        FILE        "${_KDI_EXPORT_TARGET}.cmake"
         NAMESPACE   KDI::
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/${KDI_INSTALL_CMAKE_DIR}")
-
 # Rule to export all the targets directly from the build-tree
 export(
-    EXPORT ${KDI_PROJECT_NAME_LOWER}-targets
-    # FILE "${CMAKE_CURRENT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-targets.cmake"
-    FILE "${PROJECT_BINARY_DIR}/${KDI_PROJECT_NAME_LOWER}-targets.cmake"
-    NAMESPACE KDI::
-)
+    EXPORT ${_KDI_EXPORT_TARGET}
+    FILE "${PROJECT_BINARY_DIR}/${_KDI_EXPORT_TARGET}.cmake"
+    NAMESPACE KDI::)
